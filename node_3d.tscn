@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://856crh1dl3gp"]
+
+[ext_resource type="ArrayMesh" uid="uid://b13ttb078mev0" path="res://cube.obj" id="1_fnpbg"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.27964, 0.722158, -0.604057)
+mesh = ExtResource("1_fnpbg")
