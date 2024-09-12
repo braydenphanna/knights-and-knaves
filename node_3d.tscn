@@ -5,5 +5,5 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="Cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.27964, 0.722158, -0.604057)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31911, 0.722158, -0.604057)
 mesh = ExtResource("1_fnpbg")
