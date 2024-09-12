@@ -1,9 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://856crh1dl3gp"]
+[gd_scene load_steps=7 format=3 uid="uid://856crh1dl3gp"]
 
-[ext_resource type="ArrayMesh" uid="uid://b13ttb078mev0" path="res://Assets/cube.obj" id="1_fnpbg"]
+[ext_resource type="Script" path="res://CharacterBody3d.cs" id="1_til7g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_opwln"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qrmml"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rhy1d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfsvk"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b12m0"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31911, 0.722158, -0.604057)
-mesh = ExtResource("1_fnpbg")
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="ground" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(25, 0, 0, 0, 0.5, 0, 0, 0, 25, 0, 0, 0)
+mesh = SubResource("BoxMesh_opwln")
+skeleton = NodePath("../../Player/CharacterBody3D/playerModel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(25, 0, 0, 0, 0.5, 0, 0, 0, 25, 0, 0, 0)
+shape = SubResource("BoxShape3D_qrmml")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.575904, 0.817517, 0, -0.817517, 0.575904, 0, 14.9703, 15.221)
+
+[node name="Player" type="Node" parent="."]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23794, 0)
+script = ExtResource("1_til7g")
+
+[node name="playerModel" type="MeshInstance3D" parent="Player/CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_rhy1d")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_tfsvk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.084692, 0)
+shape = SubResource("CapsuleShape3D_b12m0")
