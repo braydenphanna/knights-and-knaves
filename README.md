@@ -52,6 +52,6 @@
 - [ ] Town Scene
 - [ ] Modeled characters
 - [ ] Refined UI
-### X.X Future
+### X.X: Future
 - [ ] Party members follow you
 - [ ] Player cannot move off screen
