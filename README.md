@@ -5,15 +5,6 @@
 - C#
 - Blender 
 
-## Draw from
-- FF7
-- FF9
-- Xenogears
-- Disco Elysium
-- Greed Island
-- Logic puzzles
-- Kingdom Hearts/Disney
-
 ## Gameplay
 - Turn based combat
 - Each npc is either a knight or knave
@@ -38,6 +29,15 @@
 - Player is an outsider
 - Some sort of mechanism to reveal who is a knight or knave
 - Some sort of higher power / wizardry assigning knights / knaves
+
+## Draw from
+- FF7
+- FF9
+- Xenogears
+- Disco Elysium
+- Greed Island
+- Logic puzzles
+- Kingdom Hearts/Disney
 
 ## Roadmap
 ### 0.1: Proof Of Concept [Mechanics]
