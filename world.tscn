@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7lajsufj8cve"]
+
+[ext_resource type="PackedScene" uid="uid://412p5fkdpk5j" path="res://wall.tscn" id="1_r7r6u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_opwln"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qrmml"]
+
+[node name="World" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(25, 0, 0, 0, 0.1, 0, 0, 0, 25, 0, -0.1, 0)
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_opwln")
+skeleton = NodePath("../../../Player/CharacterBody3D/playerModel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_qrmml")
+
+[node name="Wall" parent="." instance=ExtResource("1_r7r6u")]
+
+[node name="Wall2" parent="." instance=ExtResource("1_r7r6u")]
+transform = Transform3D(-4.37114e-09, 0, 25, 0, 10, 0, -0.1, 0, -1.09278e-06, 0, 4.9, -12.5)
+
+[node name="Wall3" parent="." instance=ExtResource("1_r7r6u")]
+transform = Transform3D(0.1, 0, 0, 0, 10, 0, 0, 0, 25, 12.5, 4.9, 0)
