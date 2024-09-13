@@ -2,7 +2,7 @@
  
 ## Tech Stack
 - Godot 
-- C# or GDscript
+- C#
 - Blender 
 
 ## Draw from
