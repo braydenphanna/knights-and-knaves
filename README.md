@@ -51,7 +51,7 @@
 - [ ] Temporary character model with animations
 - [ ] UI
 ### 0.2: Proof Of Concept [Aesthetic]
-- [ ] Town Scene
+- [ ] Town scene
 - [ ] Modeled characters
 - [ ] Refined UI
 ### X.X: Future
