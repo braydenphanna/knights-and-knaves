@@ -45,8 +45,8 @@
 - [X] Build test scene [Improvement Needed]
 - [X] Pathed Camera for test scene [Improvement Needed]
 - [ ] NPC scene
-- [ ] Initiate Combat
-- [ ] Combat Sequence
+- [ ] Initiate combat
+- [ ] Combat sequence
 - [ ] Dialogue system
 - [ ] Temporary character model with animations
 - [ ] UI
