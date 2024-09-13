@@ -42,6 +42,8 @@
 ## Roadmap
 ### 0.1: Proof Of Concept [Mechanics]
 - [X] 3D movement with fixed camera
+- [ ] Build test scene
+- [ ] Pathed Camera for test scene
 - [ ] NPC scene
 - [ ] Initiate Combat
 - [ ] Combat Sequence
