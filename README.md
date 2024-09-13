@@ -40,5 +40,18 @@
 - Some sort of higher power / wizardry assigning knights / knaves
 
 ## Roadmap
-### 0.1: Proof Of Concept
-- [ ] 3D movement with fixed camera
+### 0.1: Proof Of Concept [Mechanics]
+- [X] 3D movement with fixed camera
+- [ ] NPC scene
+- [ ] Initiate Combat
+- [ ] Combat Sequence
+- [ ] Dialogue system
+- [ ] Temporary character model with animations
+- [ ] UI
+### 0.2: Proof Of Concept [Aesthetic]
+- [ ] Town Scene
+- [ ] Modeled characters
+- [ ] Refined UI
+### X.X Future
+- [ ] Party members follow you
+- [ ] Player cannot move off screen
