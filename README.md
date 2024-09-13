@@ -40,7 +40,7 @@
 - Kingdom Hearts/Disney
 
 ## Roadmap
-### 0.1: Proof Of Concept [Mechanics]
+### 0.1: Proof Of Concept [Basic Mechanics]
 - [X] 3D movement with fixed camera
 - [X] Build test scene [Improvement Needed]
 - [X] Pathed Camera for test scene [Improvement Needed]
@@ -50,7 +50,9 @@
 - [ ] Dialogue system
 - [ ] Temporary character model with animations
 - [ ] UI
-### 0.2: Proof Of Concept [Aesthetic]
+### 0.2: Proof Of Concept [Advanced Mechanics]
+- [ ] Party System
+### 0.3: Proof Of Concept [Aesthetic + Final Touches]
 - [ ] Town scene
 - [ ] Modeled characters
 - [ ] Refined UI
