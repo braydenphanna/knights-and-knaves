@@ -12,7 +12,7 @@
 - Disco Elysium
 - Greed Island
 - Logic puzzles
-- Kingdom Hearts/ Disney
+- Kingdom Hearts/Disney
 
 ## Gameplay
 - Turn based combat
