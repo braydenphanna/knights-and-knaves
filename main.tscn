@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://856crh1dl3gp"]
 
-[ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://player.tscn" id="1_ffr8j"]
-[ext_resource type="Script" path="res://Main.cs" id="1_j5n88"]
-[ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://test_world_1.blend" id="2_w8tlx"]
+[ext_resource type="Script" path="res://scripts/Main.cs" id="1_f1sig"]
+[ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_u7dev"]
+[ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://levels/test_world_1.blend" id="3_b57tj"]
 
 [node name="Main" type="Node3D"]
-script = ExtResource("1_j5n88")
+script = ExtResource("1_f1sig")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.948152, 0.317818, 0, -0.317818, 0.948152, 0, 14.4168, 12.3492)
@@ -13,8 +13,8 @@ transform = Transform3D(1, 0, 0, 0, 0.948152, 0.317818, 0, -0.317818, 0.948152, 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.999997, -0.000429728, 0.00241746, 3.43915e-06, 0.98481, 0.173637, -0.00245535, -0.173637, 0.984807, -7.92177, 3.12022, -0.910964)
 
-[node name="Player" parent="." instance=ExtResource("1_ffr8j")]
+[node name="Player" parent="." instance=ExtResource("2_u7dev")]
 transform = Transform3D(1, 0, 0, 0, 0.999961, -0.00877889, 0, 0.00877889, 0.999961, -8.29248, 0.0840797, -4.62859)
 
-[node name="test_world_1" parent="." instance=ExtResource("2_w8tlx")]
+[node name="test_world_1" parent="." instance=ExtResource("3_b57tj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

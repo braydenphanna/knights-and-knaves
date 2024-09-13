@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7lajsufj8cve"]
-
-[ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://test_world_1.blend" id="1_0ixry"]
-
-[node name="World" type="Node3D"]
-
-[node name="test_world_1" parent="." instance=ExtResource("1_0ixry")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.547333, 0, 0.273461)
