@@ -45,10 +45,9 @@
 - [X] Rotatable 3rd person camera with mouse
 - [X] Build test scene [Improvement Needed]
 - [X] NPC scene
-- [ ] Rework NPC Scene (Make character body the parent)
+- [ ] Dialogue system
 - [ ] Initiate combat
 - [ ] Combat sequence
-- [ ] Dialogue system
 - [ ] Temporary character model with animations
 - [ ] UI
 ### 0.2: Proof Of Concept [Advanced Mechanics]

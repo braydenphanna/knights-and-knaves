@@ -7,16 +7,14 @@ albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b12m0"]
 
-[node name="Npc" type="Node3D"]
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D"]
 editor_description = "Npc"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="playerModel" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="playerModel" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_rhy1d")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ram63")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_b12m0")
