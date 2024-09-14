@@ -8,10 +8,12 @@ public partial class PlayerInput : CharacterBody3D
 	[Export] public float sensitivityHorizontal = 0.5f;
 	[Export] public float sensitivityVertical = 0.5f;
 	public SpringArm3D springArm;
+	public AnimationPlayer animPlayer;
 	public override void _Ready()
 	{
 		springArm = GetNode<SpringArm3D>("SpringArm3D");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
+		animPlayer = GetNode<AnimationPlayer>("playerModel/AnimationPlayer");
 	}
 	public override void _Input(InputEvent e)
 	{
@@ -61,11 +63,14 @@ public partial class PlayerInput : CharacterBody3D
 		{
 			velocity.X = direction.X * Speed;
 			velocity.Z = direction.Z * Speed;
+			animPlayer.Play("Walk");
 		}
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+			
+			animPlayer.Play("Idle");
 		}
 
 		Velocity = velocity;
