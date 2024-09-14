@@ -1,6 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://brdaqh36b5ql1"]
+[gd_scene load_steps=8 format=3 uid="uid://brdaqh36b5ql1"]
 
-[ext_resource type="Script" path="res://scripts/CharacterBody3d.cs" id="1_qtre3"]
+[ext_resource type="Script" path="res://scripts/PlayerMovement.cs" id="1_81yh0"]
+[ext_resource type="Script" path="res://scripts/DetectInteraction.cs" id="2_js4d2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_66wav"]
+size = Vector3(1, 2, 2)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rhy1d"]
 
@@ -9,11 +13,22 @@ albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b12m0"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_hycwe"]
+
 [node name="Player" type="Node3D"]
+metadata/canInteract = false
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23794, 0)
-script = ExtResource("1_qtre3")
+editor_description = "Player"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_81yh0")
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+script = ExtResource("2_js4d2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_66wav")
 
 [node name="playerModel" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_rhy1d")
@@ -21,5 +36,11 @@ skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_tfsvk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.084692, 0)
 shape = SubResource("CapsuleShape3D_b12m0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, 0.5, -0.5)
+mesh = SubResource("BoxMesh_hycwe")
+
+[connection signal="body_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D/Area3D" method="onBodyEntered"]
+[connection signal="body_exited" from="CharacterBody3D/Area3D" to="CharacterBody3D/Area3D" method="onBodyExited"]

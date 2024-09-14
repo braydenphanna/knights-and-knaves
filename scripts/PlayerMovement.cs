@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class CharacterBody3d : CharacterBody3D
+public partial class PlayerMovement : CharacterBody3D
 {
 	public const float Speed = 5.0f;
 	public const float JumpVelocity = 4.5f;
@@ -20,6 +20,12 @@ public partial class CharacterBody3d : CharacterBody3D
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
+		}
+
+		//Handle Interact.
+		if (Input.IsActionJustPressed("ui_interact") && GetParent().GetMeta("canInteract").AsBool())
+		{
+			GD.Print("The player interacted with something");
 		}
 
 		// Get the input direction and handle the movement/deceleration.

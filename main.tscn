@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://856crh1dl3gp"]
+[gd_scene load_steps=5 format=3 uid="uid://856crh1dl3gp"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_f1sig"]
 [ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_u7dev"]
 [ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://levels/test_world_1.blend" id="3_b57tj"]
+[ext_resource type="PackedScene" uid="uid://dggxn2ndwpfgm" path="res://entities/npc.tscn" id="4_3rljw"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_f1sig")
@@ -18,3 +19,6 @@ transform = Transform3D(1, 0, 0, 0, 0.999961, -0.00877889, 0, 0.00877889, 0.9999
 
 [node name="test_world_1" parent="." instance=ExtResource("3_b57tj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Npc" parent="." instance=ExtResource("4_3rljw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0634, -0.156134, -9.98071)
