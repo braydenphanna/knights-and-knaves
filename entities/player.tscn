@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://brdaqh36b5ql1"]
 
-[ext_resource type="Script" path="res://scripts/PlayerMovement.cs" id="1_81yh0"]
+[ext_resource type="Script" path="res://scripts/PlayerInput.cs" id="1_4f84t"]
 [ext_resource type="Script" path="res://scripts/DetectInteraction.cs" id="2_js4d2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_66wav"]
@@ -15,32 +15,37 @@ albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hycwe"]
 
-[node name="Player" type="Node3D"]
-metadata/canInteract = false
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D"]
 editor_description = "Player"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("1_81yh0")
+script = ExtResource("1_4f84t")
+metadata/canInteract = false
 
-[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+[node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("2_js4d2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("BoxShape3D_66wav")
 
-[node name="playerModel" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="playerModel" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_rhy1d")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_tfsvk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_b12m0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, 0.5, -0.5)
 mesh = SubResource("BoxMesh_hycwe")
 
-[connection signal="body_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D/Area3D" method="onBodyEntered"]
-[connection signal="body_exited" from="CharacterBody3D/Area3D" to="CharacterBody3D/Area3D" method="onBodyExited"]
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.909302, 0.416138, 0, -0.416138, 0.909302, 0, 0.491015, 2.38419e-07)
+spring_length = 2.715
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.988252, -0.152831, 0, 0.152831, 0.988252, 0, 0, 0)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="onBodyEntered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="onBodyExited"]

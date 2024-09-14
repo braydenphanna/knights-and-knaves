@@ -17,7 +17,7 @@ public partial class DetectInteraction : Area3D
 		if(body.EditorDescription == "Npc")
 		{
 			GD.Print("Player is looking at an Npc");
-			GetParent().GetParent().SetMeta("canInteract", true);
+			GetParent().SetMeta("canInteract", true);
 		}
 	}
 	public void onBodyExited(Node3D body)
@@ -25,7 +25,7 @@ public partial class DetectInteraction : Area3D
 		if(body.EditorDescription == "Npc")
 		{
 			GD.Print("Player is no longer looking at an Npc");
-			GetParent().GetParent().SetMeta("canInteract", false);
+			GetParent().SetMeta("canInteract", false);
 		}
 	}
 }
