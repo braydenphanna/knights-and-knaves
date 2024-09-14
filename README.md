@@ -41,11 +41,11 @@
 
 ## Roadmap
 ### 0.1: Proof Of Concept [Basic Mechanics]
-- [X] 3D movement with fixed camera
+- [X] 3D movement
+- [ ] Rotatable 3rd person camera with mouse
 - [X] Build test scene [Improvement Needed]
-- [X] Pathed Camera for test scene [Improvement Needed]
-- [ ] Make it impossible to walk off screen
-- [ ] NPC scene
+- [X] NPC scene
+- [ ] Rework NPC Scene (Make character body the parent)
 - [ ] Initiate combat
 - [ ] Combat sequence
 - [ ] Dialogue system
@@ -59,4 +59,3 @@
 - [ ] Refined UI
 ### X.X: Future
 - [ ] Party members follow you
-- [ ] Player cannot move off screen
