@@ -3,9 +3,27 @@ using System;
 
 public partial class PlayerInput : CharacterBody3D
 {
-	public const float Speed = 5.0f;
+	public const float Speed = 7.0f;
 	public const float JumpVelocity = 4.5f;
-
+	[Export] public float sensitivityHorizontal = 0.5f;
+	[Export] public float sensitivityVertical = 0.5f;
+	public SpringArm3D springArm;
+	public override void _Ready()
+	{
+		springArm = GetNode<SpringArm3D>("SpringArm3D");
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+	}
+	public override void _Input(InputEvent e)
+	{
+		base._Input(@e);
+		if(e is InputEventMouseMotion){
+			InputEventMouseMotion m = (InputEventMouseMotion) e;
+			RotateY(Mathf.DegToRad(-m.Relative.X*sensitivityHorizontal));
+			float rotVert = Mathf.DegToRad(-m.Relative.Y*sensitivityVertical);
+			springArm.RotateX(rotVert);
+			springArm.Rotation = springArm.Rotation.Clamp((float)Mathf.DegToRad(-90),(float)Mathf.DegToRad(22.5));
+		}
+	}
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector3 velocity = Velocity;
@@ -26,6 +44,7 @@ public partial class PlayerInput : CharacterBody3D
 		{
 			GD.Print("The player interacted with something");
 		}
+
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 inputDir = Input.GetVector("left", "right", "foward", "back");

@@ -42,7 +42,7 @@
 ## Roadmap
 ### 0.1: Proof Of Concept [Basic Mechanics]
 - [X] 3D movement
-- [ ] Rotatable 3rd person camera with mouse
+- [X] Rotatable 3rd person camera with mouse
 - [X] Build test scene [Improvement Needed]
 - [X] NPC scene
 - [ ] Rework NPC Scene (Make character body the parent)
