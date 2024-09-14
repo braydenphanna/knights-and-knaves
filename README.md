@@ -44,6 +44,7 @@
 - [X] 3D movement with fixed camera
 - [X] Build test scene [Improvement Needed]
 - [X] Pathed Camera for test scene [Improvement Needed]
+- [ ] Make it impossible to walk off screen
 - [ ] NPC scene
 - [ ] Initiate combat
 - [ ] Combat sequence
