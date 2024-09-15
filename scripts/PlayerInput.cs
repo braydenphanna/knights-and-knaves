@@ -3,7 +3,7 @@ using System;
 
 public partial class PlayerInput : CharacterBody3D
 {
-	public float Speed = 7.0f;
+	public float Speed = 6.5f;
 	public float JumpVelocity = 4.5f;
 	[Export] public float sensitivityHorizontal = 0.5f;
 	[Export] public float sensitivityVertical = 0.5f;
@@ -13,7 +13,7 @@ public partial class PlayerInput : CharacterBody3D
 	{
 		springArm = GetNode<SpringArm3D>("SpringArm3D");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-		animPlayer = GetNode<AnimationPlayer>("playerModel/AnimationPlayer");
+		animPlayer = GetNode<AnimationPlayer>("character2/AnimationPlayer");
 	}
 	public override void _Input(InputEvent e)
 	{
@@ -49,10 +49,10 @@ public partial class PlayerInput : CharacterBody3D
 
 		if (Input.IsActionPressed("sprint"))
 		{
-			Speed = 11.0f;
+			Speed = 10.0f;
 		}
 		else{
-			Speed = 7.0f;
+			Speed = 6.5f;
 		}
 
 		// Get the input direction and handle the movement/deceleration.

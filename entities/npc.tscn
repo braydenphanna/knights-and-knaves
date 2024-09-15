@@ -1,9 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dggxn2ndwpfgm"]
+[gd_scene load_steps=3 format=3 uid="uid://dggxn2ndwpfgm"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_rhy1d"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ram63"]
-albedo_color = Color(0, 1, 0, 1)
+[ext_resource type="PackedScene" uid="uid://cpgl2qiq5jb2t" path="res://assets/character2.blend" id="1_0hc7p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b12m0"]
 
@@ -11,10 +8,8 @@ albedo_color = Color(0, 1, 0, 1)
 editor_description = "Npc"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="playerModel" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_rhy1d")
-skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_ram63")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_b12m0")
+
+[node name="character2" parent="." instance=ExtResource("1_0hc7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

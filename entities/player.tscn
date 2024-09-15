@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/PlayerInput.cs" id="1_4f84t"]
 [ext_resource type="Script" path="res://scripts/DetectInteraction.cs" id="2_js4d2"]
-[ext_resource type="PackedScene" uid="uid://cljrps6sn1t71" path="res://entities/playerModel.tscn" id="3_js3k4"]
+[ext_resource type="PackedScene" uid="uid://cpgl2qiq5jb2t" path="res://assets/character2.blend" id="3_c3dox"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_66wav"]
 size = Vector3(1, 2, 2)
@@ -35,7 +35,8 @@ margin = 0.2
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.988252, -0.152831, 0, 0.152831, 0.988252, 0, 0, 0)
 
-[node name="playerModel" parent="." instance=ExtResource("3_js3k4")]
+[node name="character2" parent="." instance=ExtResource("3_c3dox")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="onBodyEntered"]
 [connection signal="body_exited" from="Area3D" to="Area3D" method="onBodyExited"]

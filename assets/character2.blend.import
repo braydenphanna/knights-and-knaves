@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://deadq82vllcpw"
-path="res://.godot/imported/test_world_1.blend-c84626a2483da05996a657b0b484f02b.scn"
+uid="uid://cpgl2qiq5jb2t"
+path="res://.godot/imported/character2.blend-c68c1dbc9128e78351f7868bb98b7d23.scn"
 
 [deps]
 
-source_file="res://levels/test_world_1.blend"
-dest_files=["res://.godot/imported/test_world_1.blend-c84626a2483da05996a657b0b484f02b.scn"]
+source_file="res://assets/character2.blend"
+dest_files=["res://.godot/imported/character2.blend-c68c1dbc9128e78351f7868bb98b7d23.scn"]
 
 [params]
 
@@ -34,8 +34,24 @@ import_script/path=""
 _subresources={
 "materials": {
 "Material": {
-"use_external/enabled": false,
-"use_external/path": "res://Materials/blue.tres"
+"use_external/enabled": true,
+"use_external/path": "res://assets/blue.tres"
+},
+"Material.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/blue.tres"
+},
+"Material.003": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/blue.tres"
+},
+"Material.004": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/blue.tres"
+},
+"Material.006": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/blue.tres"
 }
 }
 }
