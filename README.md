@@ -48,7 +48,7 @@
 - [ ] Dialogue system
 - [ ] Initiate combat
 - [ ] Combat sequence
-- [ ] Temporary character model with animations
+- [X] Temporary character model with animations [Needs major work]
 - [ ] UI
 ### 0.2: Proof Of Concept [Advanced Mechanics]
 - [ ] Party System
