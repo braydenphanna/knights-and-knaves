@@ -30,12 +30,7 @@
 - Player character either
   - Can choose knight or knave
   - neither (leaning towards this)
-- Logic puzzles
-- Minigames
-
-## Graphics
-- ff9-like chibi cartoon characters
-- FMVs
+- Minigames/Logic puzzles
 
 ## Story
 - Medieval Quest
@@ -50,20 +45,19 @@
 - [X] 3D movement
 - [X] Rotatable 3rd person camera with mouse
 - [X] Build test scene [Improvement Needed]
+- [X] Temporary character model with basic animation
 - [X] NPC scene
 - [ ] Dialogue system
-- [ ] Initiate combat
-- [ ] Combat sequence
-- [X] Temporary character model with animations [Needs major work]
-- [ ] UI
+- [ ] Combat
 ### 0.2: Proof Of Concept [Advanced Mechanics]
 - [ ] Party System
+- [ ] Make several more characters and animations
+- [ ] UI
 ### 0.3: Proof Of Concept [Aesthetic + Final Touches]
 - [ ] Town scene
 - [ ] Modeled characters
-- [ ] Refined UI
+- [ ] Party members follow you around world map and levels
 ### X.X: Future
-- [ ] Party members follow you
 
 ## Inspiration
 - FF7 + FF9
