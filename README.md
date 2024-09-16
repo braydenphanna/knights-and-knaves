@@ -1,9 +1,4 @@
 # Knights and Knaves
- 
-OCTAGON / CIRCLE COMBAT + EDITABLE BATTLE ENTER ORIENTATION 
-LIKE DND CAN MOVE 1 SPOT OVER AND ATTACK OR 2 SPOTS OVER
-
-WORLD MAP
 
 ## Tech Stack
 - Godot 
@@ -12,6 +7,9 @@ WORLD MAP
 
 ## Gameplay
 - Turn based combat
+  - OCTAGON / CIRCLE COMBAT + EDITABLE BATTLE ENTER ORIENTATION 
+  - LIKE DND CAN MOVE 1 SPOT OVER AND ATTACK OR 2 SPOTS OVER
+- World Map
 - Each npc is either a knight or knave
   - Knights: can only tell the truth
   - Knaves: can only lie
@@ -24,7 +22,6 @@ WORLD MAP
 
 ## Graphics
 - ff9-like chibi cartoon characters
-- Fixed Camera (ie ff7-9, Disco Elysium)
 - FMVs
 
 ## Story
@@ -34,15 +31,6 @@ WORLD MAP
 - Player is an outsider
 - Some sort of mechanism to reveal who is a knight or knave
 - Some sort of higher power / wizardry assigning knights / knaves
-
-## Draw from
-- FF7
-- FF9
-- Xenogears
-- Disco Elysium
-- Greed Island
-- Logic puzzles
-- Kingdom Hearts/Disney
 
 ## Roadmap
 ### 0.1: Proof Of Concept [Basic Mechanics]
@@ -64,5 +52,15 @@ WORLD MAP
 ### X.X: Future
 - [ ] Party members follow you
 
-## Screenshots
-<img src="screenshots/char.png" width="410" />
+## Inspiration
+- FF7 + FF9
+- Xenogears
+- Disco Elysium
+- Greed Island
+- Kingdom Hearts/Disney
+- Windwaker
+
+## Images
+<img src="screenshots/char.png" width="410" /> <img src="screenshots/char2.png" width="334" />
+## Videos
+[Showcase Playlist](https://www.youtube.com/watch?v=QhWuJ_pk5-A&list=PLE9KDpgiOyFDyoT6gnDmB5Nd-Xvu2F3We)
