@@ -42,9 +42,9 @@
 - [ ] Party members follow you around world map and levels
 
 ## Tech Stack
-- Godot 
+- Godot 4.3
 - C#
-- Blender
+- Blender 4.2.1
 
 ## Inspiration
 - FF7 + FF9
