@@ -63,3 +63,6 @@ WORLD MAP
 - [ ] Refined UI
 ### X.X: Future
 - [ ] Party members follow you
+
+## Screenshots
+<img src="screenshots/char.png" width="410" />
