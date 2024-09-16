@@ -1,24 +1,46 @@
 using Godot;
 using System;
+using System.Threading;
 
 public partial class PlayerInput : CharacterBody3D
 {
-	public float Speed = 6.5f;
+	public float Speed = 5.0f;
 	public float JumpVelocity = 4.5f;
 	[Export] public float sensitivityHorizontal = 0.5f;
 	[Export] public float sensitivityVertical = 0.5f;
+
+	public bool wasAFK;
+	[Export] public double AFKTimer = 60;
+
 	public SpringArm3D springArm;
 	public AnimationPlayer animPlayer;
+	public Godot.Timer timer;
+
 	public override void _Ready()
 	{
 		springArm = GetNode<SpringArm3D>("SpringArm3D");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-		animPlayer = GetNode<AnimationPlayer>("character2/AnimationPlayer");
+		animPlayer = GetNode<AnimationPlayer>("character3/AnimationPlayer");
+
+		timer = new Godot.Timer();
+		AddChild(timer);
+		timer.Timeout += onTimeout;
+
+		timer.WaitTime = AFKTimer;
+		timer.OneShot = true;
+		timer.Start();
 	}
 	public override void _Input(InputEvent e)
 	{
 		base._Input(@e);
 		if(e is InputEventMouseMotion){
+			if(wasAFK){
+				springArm.Rotation = new Vector3(Mathf.DegToRad(-15),0,0);
+				wasAFK=false;
+			}
+			timer.WaitTime = AFKTimer;
+			timer.Start();
+			
 			InputEventMouseMotion m = (InputEventMouseMotion) e;
 			RotateY(Mathf.DegToRad(-m.Relative.X*sensitivityHorizontal));
 			float rotVert = Mathf.DegToRad(-m.Relative.Y*sensitivityVertical);
@@ -28,6 +50,7 @@ public partial class PlayerInput : CharacterBody3D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
+		GD.Print(Engine.GetFramesPerSecond());
 		Vector3 velocity = Velocity;
 
 		// Add the gravity.
@@ -52,7 +75,7 @@ public partial class PlayerInput : CharacterBody3D
 			Speed = 10.0f;
 		}
 		else{
-			Speed = 6.5f;
+			Speed = 5.0f;
 		}
 
 		// Get the input direction and handle the movement/deceleration.
@@ -64,6 +87,8 @@ public partial class PlayerInput : CharacterBody3D
 			velocity.X = direction.X * Speed;
 			velocity.Z = direction.Z * Speed;
 			animPlayer.Play("Walk");
+			timer.WaitTime =10;
+			timer.Start();
 		}
 		else
 		{
@@ -71,9 +96,20 @@ public partial class PlayerInput : CharacterBody3D
 			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
 			
 			animPlayer.Play("Idle");
+			if(timer.IsStopped())
+			{
+				springArm.Rotation = new Godot.Vector3(Mathf.DegToRad(-25),springArm.Rotation.Y,springArm.Rotation.Z);
+				springArm.RotateY(Mathf.DegToRad(-0.25f));
+			}
+
 		}
 
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+	public void onTimeout()
+	{
+		wasAFK=true;
+	}
+
 }
