@@ -44,7 +44,8 @@
 ## Tech Stack
 - Godot 4.3
 - C#
-- Blender 4.2.1
+- Blender
+- Visual Studio Code
 
 ## Inspiration
 - FF7 + FF9
