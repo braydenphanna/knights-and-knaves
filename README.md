@@ -23,14 +23,6 @@
 - Recruitable party members who are knights/knaves
 - Minigames/Puzzles
 
-## Story
-- Medieval Quest
-- Sympathetic Knave character 
-- Some npc’s assignment is obvious, others not
-- Player is an outsider
-- Some sort of mechanism to reveal who is a knight or knave
-- Some sort of higher power or wizardry assigning knights/knaves
-
 ## Roadmap
 ### 0.1: Proof Of Concept [Basic Mechanics]
 - [X] 3D movement
