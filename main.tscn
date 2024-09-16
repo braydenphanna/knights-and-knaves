@@ -8,6 +8,7 @@
 
 [node name="Player" parent="." instance=ExtResource("2_u7dev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.67658, 1, -3.98551)
+AFKTimer = 60.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.948152, 0.317818, 0, -0.317818, 0.948152, 0, 14.4168, 12.3492)
