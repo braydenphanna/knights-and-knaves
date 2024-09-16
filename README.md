@@ -6,9 +6,24 @@
 - Blender 
 
 ## Gameplay
-- Turn based combat
-  - OCTAGON / CIRCLE COMBAT + EDITABLE BATTLE ENTER ORIENTATION 
-  - LIKE DND CAN MOVE 1 SPOT OVER AND ATTACK OR 2 SPOTS OVER
+
+  
+| Class         | Speed (Max Speed)            | Attack Range (falloff)   | Attack Strength (1-3) |
+| ------------- | ---------------------------- | ------------------------ |---------------------- |
+| 🔵 Hero      | 1(2)                          | 2 (1+)                  | 2                      |
+| 🔴 Brute     | 0(1)                          | 1                       | 3                      |
+| 🟡 Ranger    | 1(2)                          | 3 (2-)                  | 2                      |
+| 🟢 Thief     | 2(3)                          | 2 (1+)                  | 1                      |
+| ⚪ Healer?   |                               |                         |                        |
+| 🟣 Special   | -                             | -                       | -                      |
+- Turn based 3 rank hexagon combat system
+  - Editable default battle orientation
+  - 3 person party
+  - Each turn you have movement and attack(unless you're brute). You can sacrifice attack for +1 movement.
+  - Damage falloff (+ means above, - means below)
+  - Special class is for unique enemies
+  - Due to Hexagonal setup the middle rank can attack more spots, but also can be attacked from more directions
+<img src="screenshots/battlegraph.png" width="200" />
 - World Map
 - Each npc is either a knight or knave
   - Knights: can only tell the truth
