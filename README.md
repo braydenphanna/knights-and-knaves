@@ -6,24 +6,22 @@
 - Blender 
 
 ## Gameplay
-
   
 | Class         | Speed (Max Speed)            | Attack Range (falloff)   | Attack Strength (1-3) |
 | ------------- | ---------------------------- | ------------------------ |---------------------- |
 | 🔵 Hero      | 1(2)                          | 2 (1+)                  | 2                      |
 | 🔴 Brute     | 0(1)                          | 1                       | 3                      |
-| 🟡 Ranger    | 1(2)                          | 3 (2-)                  | 2                      |
+| 🟡 Ranger    | 1(2)                          | 3 (2-)                  | 2                      | 
 | 🟢 Thief     | 2(3)                          | 2 (1+)                  | 1                      |
 | ⚪ Healer?   |                               |                         |                        |
 | 🟣 Special   | -                             | -                       | -                      |
-- Turn based 3 rank hexagon combat system
+- Turn based [3 rank hexagon combat system](#Images)
   - Editable default battle orientation
   - 3 person party
   - Each turn you have movement and attack(unless you're brute). You can sacrifice attack for +1 movement.
   - Damage falloff (+ means above, - means below)
   - Special class is for unique enemies
-  - Due to Hexagonal setup the middle rank can attack more spots, but also can be attacked from more directions
-<img src="screenshots/battlegraph.png" width="200" />
+  - Due to Hexagonal setup the middle rank can attack more spots, but also can be attacked from more directions 
 - World Map
 - Each npc is either a knight or knave
   - Knights: can only tell the truth
@@ -77,5 +75,6 @@
 
 ## Images
 <img src="screenshots/char.png" width="410" /> <img src="screenshots/char2.png" width="334" />
+<img src="screenshots/battlegraph.png" width="200" />
 ## Videos
 [Showcase Playlist](https://www.youtube.com/watch?v=QhWuJ_pk5-A&list=PLE9KDpgiOyFDyoT6gnDmB5Nd-Xvu2F3We)
