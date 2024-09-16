@@ -46,6 +46,7 @@
 - C#
 - Blender
 - Visual Studio Code
+- Krita
 
 ## Inspiration
 - FF7 + FF9
