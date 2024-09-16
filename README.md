@@ -15,7 +15,7 @@
 | 🟢 Thief     | 2(3)                          | 2 (1+)                  | 1                      |
 | ⚪ Healer?   |                               |                         |                        |
 | 🟣 Special   | -                             | -                       | -                      |
-- Turn based [3 rank hexagon combat system](#Images)
+- Turn based [3 rank hexagon combat system](https://github.com/braydenphanna/knights-and-knaves/blob/main/screenshots/battlegraph.png)
   - Editable default battle orientation
   - 3 person party
   - Each turn you have movement and attack(unless you're brute). You can sacrifice attack for +1 movement.
