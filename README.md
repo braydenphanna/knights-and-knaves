@@ -1,10 +1,4 @@
 # Knights and Knaves
-
-## Tech Stack
-- Godot 
-- C#
-- Blender 
-
 ## Gameplay
   
 | Class         | Speed (Max Speed)            | Attack Range (falloff)   | Attack Strength (1-3) |
@@ -27,10 +21,7 @@
   - Knights: can only tell the truth
   - Knaves: can only lie
 - Recruitable party members who are knights/knaves
-- Player character either
-  - Can choose knight or knave
-  - neither (leaning towards this)
-- Minigames/Logic puzzles
+- Minigames/Puzzles
 
 ## Story
 - Medieval Quest
@@ -38,7 +29,7 @@
 - Some npc’s assignment is obvious, others not
 - Player is an outsider
 - Some sort of mechanism to reveal who is a knight or knave
-- Some sort of higher power / wizardry assigning knights / knaves
+- Some sort of higher power or wizardry assigning knights/knaves
 
 ## Roadmap
 ### 0.1: Proof Of Concept [Basic Mechanics]
@@ -57,7 +48,11 @@
 - [ ] Town scene
 - [ ] Modeled characters
 - [ ] Party members follow you around world map and levels
-### X.X: Future
+
+## Tech Stack
+- Godot 
+- C#
+- Blender
 
 ## Inspiration
 - FF7 + FF9
