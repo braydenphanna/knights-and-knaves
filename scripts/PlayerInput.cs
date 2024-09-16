@@ -50,7 +50,6 @@ public partial class PlayerInput : CharacterBody3D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		GD.Print(Engine.GetFramesPerSecond());
 		Vector3 velocity = Velocity;
 
 		// Add the gravity.
@@ -59,10 +58,14 @@ public partial class PlayerInput : CharacterBody3D
 			velocity += GetGravity() * (float)delta;
 		}
 
-		// Handle Jump.
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
+		}
+
+		if (Input.IsActionJustPressed("escape"))
+		{
+			Input.MouseMode = Input.MouseModeEnum.Visible;
 		}
 
 		if (Input.IsActionJustPressed("interact") && GetMeta("canInteract").AsBool())
@@ -78,8 +81,6 @@ public partial class PlayerInput : CharacterBody3D
 			Speed = 5.0f;
 		}
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 inputDir = Input.GetVector("left", "right", "foward", "back");
 		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
 		if (direction != Vector3.Zero)
@@ -101,7 +102,6 @@ public partial class PlayerInput : CharacterBody3D
 				springArm.Rotation = new Godot.Vector3(Mathf.DegToRad(-25),springArm.Rotation.Y,springArm.Rotation.Z);
 				springArm.RotateY(Mathf.DegToRad(-0.25f));
 			}
-
 		}
 
 		Velocity = velocity;
@@ -111,5 +111,4 @@ public partial class PlayerInput : CharacterBody3D
 	{
 		wasAFK=true;
 	}
-
 }
