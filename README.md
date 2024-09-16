@@ -30,12 +30,12 @@
 - [X] Build test scene [Improvement Needed]
 - [X] Temporary character model with basic animation
 - [X] NPC scene
+- [ ] UI
 - [ ] Dialogue system
 - [ ] Combat
 ### 0.2: Proof Of Concept [Advanced Mechanics]
 - [ ] Party System
 - [ ] Make several more characters and animations
-- [ ] UI
 ### 0.3: Proof Of Concept [Aesthetic + Final Touches]
 - [ ] Town scene
 - [ ] Modeled characters
