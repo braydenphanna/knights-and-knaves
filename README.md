@@ -31,7 +31,7 @@
 - [X] Temporary character model with basic animation
 - [X] NPC scene
 - [ ] UI
-- [ ] Dialogue system
+- [X] Dialogue system [Could possibly be refined some more, FIX BUG WITH AFK SPIN WHILE CHATTING]
 - [ ] Combat
 ### 0.2: Proof Of Concept [Advanced Mechanics]
 - [ ] Party System
@@ -51,6 +51,7 @@
 ## Inspiration
 - FF7 + FF9
 - Xenogears
+- Kotor
 - Disco Elysium
 - Greed Island
 - Kingdom Hearts/Disney
@@ -60,4 +61,4 @@
 <img src="screenshots/char.png" width="410" /> <img src="screenshots/char2.png" width="334" />
 
 ## Videos
-[Showcase Playlist](https://www.youtube.com/watch?v=QhWuJ_pk5-A&list=PLE9KDpgiOyFDyoT6gnDmB5Nd-Xvu2F3We)
+[Daily Showcase Playlist](https://www.youtube.com/watch?v=QhWuJ_pk5-A&list=PLE9KDpgiOyFDyoT6gnDmB5Nd-Xvu2F3We)
