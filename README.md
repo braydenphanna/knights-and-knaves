@@ -51,6 +51,7 @@
 ## Inspiration
 - FF7 + FF9
 - Xenogears
+- Kotor
 - Disco Elysium
 - Greed Island
 - Kingdom Hearts/Disney
