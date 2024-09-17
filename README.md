@@ -30,21 +30,23 @@
 - [X] Build test scene [Improvement Needed]
 - [X] Temporary character model with basic animation
 - [X] NPC scene
+- [ ] UI
 - [ ] Dialogue system
 - [ ] Combat
 ### 0.2: Proof Of Concept [Advanced Mechanics]
 - [ ] Party System
 - [ ] Make several more characters and animations
-- [ ] UI
 ### 0.3: Proof Of Concept [Aesthetic + Final Touches]
 - [ ] Town scene
 - [ ] Modeled characters
 - [ ] Party members follow you around world map and levels
 
 ## Tech Stack
-- Godot 
+- Godot 4.3
 - C#
 - Blender
+- Visual Studio Code
+- Krita
 
 ## Inspiration
 - FF7 + FF9
