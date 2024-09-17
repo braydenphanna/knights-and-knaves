@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using System.Threading;
 
 public partial class PlayerInput : CharacterBody3D
@@ -10,17 +11,28 @@ public partial class PlayerInput : CharacterBody3D
 	[Export] public float sensitivityVertical = 0.5f;
 
 	public bool wasAFK;
+	public bool inDialogue = false;
 	[Export] public double AFKTimer = 60;
 
 	public SpringArm3D springArm;
+	public Area3D area3D;
 	public AnimationPlayer animPlayer;
 	public Godot.Timer timer;
-
+	public Control UI;
+	public TextureRect textBox;
+	public static RichTextLabel dialogue;
+	[Signal] 
+	public delegate void dialogueCommandEventHandler(string name, string command);
 	public override void _Ready()
 	{
 		springArm = GetNode<SpringArm3D>("SpringArm3D");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		animPlayer = GetNode<AnimationPlayer>("character3/AnimationPlayer");
+		UI = GetParent().GetNode<Control>("UI");
+		textBox = UI.GetNode<TextureRect>("TextBox");
+		dialogue = textBox.GetNode<RichTextLabel>("Text");
+		dialogue.VisibleRatio = 0;
+		area3D = GetNode<Area3D>("Area3D");
 
 		timer = new Godot.Timer();
 		AddChild(timer);
@@ -32,8 +44,7 @@ public partial class PlayerInput : CharacterBody3D
 	}
 	public override void _Input(InputEvent e)
 	{
-		base._Input(@e);
-		if(e is InputEventMouseMotion){
+		if(e is InputEventMouseMotion && !inDialogue){
 			if(wasAFK){
 				springArm.Rotation = new Vector3(Mathf.DegToRad(-15),0,0);
 				wasAFK=false;
@@ -58,7 +69,7 @@ public partial class PlayerInput : CharacterBody3D
 			velocity += GetGravity() * (float)delta;
 		}
 
-		if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		if (Input.IsActionJustPressed("jump") && IsOnFloor() && !inDialogue)
 		{
 			velocity.Y = JumpVelocity;
 		}
@@ -70,10 +81,31 @@ public partial class PlayerInput : CharacterBody3D
 
 		if (Input.IsActionJustPressed("interact") && GetMeta("canInteract").AsBool())
 		{
-			GD.Print("The player interacted with something");
+			if(!inDialogue && dialogue.VisibleRatio != 1)
+			{
+
+				GD.Print("The player interacted with something");
+				EmitSignal(SignalName.dialogueCommand,area3D.GetOverlappingAreas().Last().GetParent().GetMeta("name"),"begin");
+				dialogue.VisibleRatio = 0;
+				textBox.Visible = true;
+				inDialogue = true;
+			}
+			else if(inDialogue && dialogue.VisibleRatio != 1){
+				dialogue.VisibleRatio = 1;
+			}
+			else if(inDialogue && dialogue.VisibleRatio == 1)
+			{
+				EmitSignal(SignalName.dialogueCommand,area3D.GetOverlappingAreas().Last().GetParent().GetMeta("name"),"next");
+				dialogue.VisibleRatio = 0;
+			}
+			else if(!inDialogue && dialogue.VisibleRatio == 1){
+				inDialogue = false;
+				textBox.Visible = false;
+				dialogue.VisibleRatio = 0;
+			}
 		}
 
-		if (Input.IsActionPressed("sprint"))
+		if (Input.IsActionPressed("sprint") && !inDialogue)
 		{
 			Speed = 10.0f;
 		}
@@ -83,7 +115,7 @@ public partial class PlayerInput : CharacterBody3D
 
 		Vector2 inputDir = Input.GetVector("left", "right", "foward", "back");
 		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
-		if (direction != Vector3.Zero)
+		if (direction != Vector3.Zero&& !inDialogue)
 		{
 			velocity.X = direction.X * Speed;
 			velocity.Z = direction.Z * Speed;
@@ -99,16 +131,34 @@ public partial class PlayerInput : CharacterBody3D
 			animPlayer.Play("Idle");
 			if(timer.IsStopped())
 			{
-				springArm.Rotation = new Godot.Vector3(Mathf.DegToRad(-25),springArm.Rotation.Y,springArm.Rotation.Z);
-				springArm.RotateY(Mathf.DegToRad(-0.25f));
+				camSpin();
 			}
 		}
 
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+
+	public override void _Process(double delta)
+	{
+		if(inDialogue && dialogue.VisibleRatio != 1){
+			dialogue.VisibleRatio += (float)(0.2 * delta);
+		}
+	}
+
 	public void onTimeout()
 	{
 		wasAFK=true;
 	}
+	public void onDialogueEnd(){
+		inDialogue=false;
+		textBox.Visible = false;
+		dialogue.VisibleRatio = 0;
+	}
+	public void camSpin()
+	{
+		springArm.Rotation = new Godot.Vector3(Mathf.DegToRad(-25),springArm.Rotation.Y,springArm.Rotation.Z);
+		springArm.RotateY(Mathf.DegToRad(-0.25f));
+	}
+	
 }
