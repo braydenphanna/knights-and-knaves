@@ -31,7 +31,7 @@
 - [X] Temporary character model with basic animation
 - [X] NPC scene
 - [ ] UI
-- [X] Dialogue system [Could possibly be refined]
+- [X] Dialogue system [Could possibly be refined some more]
 - [ ] Combat
 ### 0.2: Proof Of Concept [Advanced Mechanics]
 - [ ] Party System
