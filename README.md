@@ -60,4 +60,4 @@
 <img src="screenshots/char.png" width="410" /> <img src="screenshots/char2.png" width="334" />
 
 ## Videos
-[Showcase Playlist](https://www.youtube.com/watch?v=QhWuJ_pk5-A&list=PLE9KDpgiOyFDyoT6gnDmB5Nd-Xvu2F3We)
+[Daily Showcase Playlist](https://www.youtube.com/watch?v=QhWuJ_pk5-A&list=PLE9KDpgiOyFDyoT6gnDmB5Nd-Xvu2F3We)
