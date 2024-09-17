@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://856crh1dl3gp"]
+[gd_scene load_steps=7 format=3 uid="uid://856crh1dl3gp"]
 
 [ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_u7dev"]
 [ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://levels/test_world_1.blend" id="3_b57tj"]
 [ext_resource type="PackedScene" uid="uid://dggxn2ndwpfgm" path="res://entities/npc.tscn" id="4_3rljw"]
 [ext_resource type="Texture2D" uid="uid://bhgbjygoaux8d" path="res://assets/textbox.png" id="4_6flht"]
 [ext_resource type="Script" path="res://scripts/UI.cs" id="4_n60hh"]
+[ext_resource type="Texture2D" uid="uid://c4xi1ffmtq54t" path="res://assets/char_avatar.png" id="6_8wt6x"]
 
 [node name="Main" type="Node3D"]
 
@@ -54,6 +55,15 @@ offset_top = 9.0
 offset_right = 496.0
 offset_bottom = 97.0
 theme_override_font_sizes/normal_font_size = 19
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 512.0
+offset_right = 1857.0
+offset_bottom = 1353.0
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("6_8wt6x")
 
 [connection signal="dialogueCommand" from="Player" to="Npc" method="dialogueCommandReceiver"]
 [connection signal="dialogueEnd" from="Npc" to="Player" method="onDialogueEnd"]
