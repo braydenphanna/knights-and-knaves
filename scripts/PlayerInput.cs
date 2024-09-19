@@ -7,6 +7,7 @@ public partial class PlayerInput : CharacterBody3D
 {
 	public float Speed = 5.0f;
 	public float JumpVelocity = 4.5f;
+	private float health = 100f;
 	[Export] public float sensitivityHorizontal = 0.5f;
 	[Export] public float sensitivityVertical = 0.5f;
 
@@ -14,12 +15,13 @@ public partial class PlayerInput : CharacterBody3D
 	public bool inDialogue = false;
 	[Export] public double AFKTimer = 60;
 
-	public SpringArm3D springArm;
-	public Area3D area3D;
-	public AnimationPlayer animPlayer;
-	public Godot.Timer timer;
-	public Control UI;
-	public TextureRect textBox;
+	private SpringArm3D springArm;
+	private Area3D area3D;
+	private AnimationPlayer animPlayer;
+	private Godot.Timer timer;
+	private Control UI;
+	private TextureRect textBox;
+	private TextureProgressBar healthBar;
 	public static RichTextLabel dialogue;
 	[Signal] 
 	public delegate void dialogueCommandEventHandler(string name, string command);
@@ -27,13 +29,15 @@ public partial class PlayerInput : CharacterBody3D
 	{
 		springArm = GetNode<SpringArm3D>("SpringArm3D");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-		animPlayer = GetNode<AnimationPlayer>("character3/AnimationPlayer");
+		animPlayer = GetNode<AnimationPlayer>("charlie/AnimationPlayer");
 		UI = GetParent().GetNode<Control>("UI");
 		textBox = UI.GetNode<TextureRect>("TextBox");
 		dialogue = textBox.GetNode<RichTextLabel>("Text");
+		healthBar = UI.GetNode<TextureProgressBar>("Char1_Health");
+		healthBar.Value = health;
 		dialogue.VisibleRatio = 0;
 		area3D = GetNode<Area3D>("Area3D");
-
+		
 		timer = new Godot.Timer();
 		AddChild(timer);
 		timer.Timeout += onTimeout;
@@ -138,14 +142,12 @@ public partial class PlayerInput : CharacterBody3D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
-
 	public override void _Process(double delta)
 	{
 		if(inDialogue && dialogue.VisibleRatio != 1){
 			dialogue.VisibleRatio += (float)(0.2 * delta);
 		}
 	}
-
 	public void onTimeout()
 	{
 		wasAFK=true;
@@ -161,4 +163,12 @@ public partial class PlayerInput : CharacterBody3D
 		springArm.RotateY(Mathf.DegToRad(-0.25f));
 	}
 	
+	//getters and setters
+	public float getHealth(){
+		return health;
+	}
+	public void setHealth(float h){
+		health = h;
+		healthBar.Value = h;
+	}
 }
