@@ -30,11 +30,12 @@
 - [X] Build test scene [Improvement Needed]
 - [X] Temporary character model with basic animation
 - [X] NPC scene
-- [ ] UI
+- [ ] HUD
 - [X] Dialogue system [Could possibly be refined some more, FIX BUG WITH AFK SPIN WHILE CHATTING]
 - [ ] Combat
 ### 0.2: Proof Of Concept [Advanced Mechanics]
 - [ ] Party System
+- [ ] UI
 - [ ] Make several more characters and animations
 ### 0.3: Proof Of Concept [Aesthetic + Final Touches]
 - [ ] Town scene
