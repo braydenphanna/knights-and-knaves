@@ -57,6 +57,7 @@
 - Greed Island
 - Kingdom Hearts/Disney
 - Windwaker
+- Megaman Legends
 
 ## Images
 <img src="screenshots/charlie.png" width="400" />
