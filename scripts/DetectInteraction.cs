@@ -33,7 +33,6 @@ public partial class DetectInteraction : Area3D
 			GD.Print("Player is no longer looking at an Npc");
 			GetParent().SetMeta("canInteract", false);
 			textBox.Visible = false;
-			
 		}
 	}
 }

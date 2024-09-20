@@ -1,7 +1,14 @@
 {
 	"Glep":{
-		"1" : {"text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum faucibus odio nec blandit dignissim..."},
-		"2" : {"text":"Ut congue varius urna, sit amet vehicula metus suscipit blandit. Mauris sodales consequat scelerisque..."},
-		"3" : {"text":"Donec in leo dignissim, bibendum diam a, sodales lorem. Nulla dignissim egestas orci sed aliquam."}
+		"1" : {"text":"Teleporting to the arena in 3..."},
+		"2" : {"text":"2..."},
+		"3" : {"text":"1..."},
+		"4" : {"event": "tele/0,1,0"}
+	},
+	"Allan":{
+		"1" : {"text":"Teleporting to home in 3..."},
+		"2" : {"text":"2..."},
+		"3" : {"text":"1..."},
+		"4" : {"event": "tele/-9,1,40"}
 	}
 }

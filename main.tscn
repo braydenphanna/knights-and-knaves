@@ -1,32 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://856crh1dl3gp"]
+[gd_scene load_steps=12 format=3 uid="uid://856crh1dl3gp"]
 
 [ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_u7dev"]
 [ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://levels/test_world_1.blend" id="3_b57tj"]
 [ext_resource type="PackedScene" uid="uid://dggxn2ndwpfgm" path="res://entities/npc.tscn" id="4_3rljw"]
 [ext_resource type="Texture2D" uid="uid://bhgbjygoaux8d" path="res://assets/textbox.png" id="4_6flht"]
 [ext_resource type="PackedScene" uid="uid://cvbiybole5wpl" path="res://levels/arena.blend" id="4_dj2rd"]
+[ext_resource type="Script" path="res://scripts/CombatController.cs" id="4_h11c6"]
 [ext_resource type="Script" path="res://scripts/UI.cs" id="4_n60hh"]
 [ext_resource type="Texture2D" uid="uid://brvnxbt3p0kjv" path="res://assets/healthsphere.png" id="6_cso3c"]
 [ext_resource type="Texture2D" uid="uid://csw2sm7l1xxn6" path="res://assets/char_avatar_new.png" id="7_34xq1"]
+[ext_resource type="Script" path="res://scripts/NpcSignalDirector.cs" id="8_fqp7f"]
+[ext_resource type="PackedScene" uid="uid://bvmx4mtalchsc" path="res://levels/markers.blend" id="11_uwlse"]
 
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_u7dev")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.67658, 1, -3.98551)
+transform = Transform3D(1, 0, 0, 0, 0.999709, -0.0241181, 0, 0.0241181, 0.999709, -9, 1, 40)
 AFKTimer = 10.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.948152, 0.317818, 0, -0.317818, 0.948152, 0, 14.4168, 12.3492)
-
-[node name="Npc" parent="." instance=ExtResource("4_3rljw")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.9569, 1, -9.99379)
-name = "Glep"
-
 [node name="test_world_1" parent="." instance=ExtResource("3_b57tj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 43.7995)
 
 [node name="arena" parent="." instance=ExtResource("4_dj2rd")]
-visible = false
+script = ExtResource("4_h11c6")
+
+[node name="markers" parent="arena" instance=ExtResource("11_uwlse")]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -44,22 +42,22 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -256.0
-offset_top = -136.0
-offset_right = 256.0
-offset_bottom = -36.0
+offset_left = -456.0
+offset_top = -288.0
+offset_right = 456.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_6flht")
-stretch_mode = 3
+stretch_mode = 5
 
 [node name="Text" type="RichTextLabel" parent="UI/TextBox"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 9.0
-offset_right = 496.0
-offset_bottom = 97.0
-theme_override_font_sizes/normal_font_size = 19
+offset_right = 904.0
+offset_bottom = 168.0
+theme_override_font_sizes/normal_font_size = 36
 
 [node name="Char1_Health" type="TextureProgressBar" parent="UI"]
 layout_mode = 1
@@ -68,13 +66,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -160.0
-offset_right = 840.0
-offset_bottom = 840.0
+offset_left = -312.0
+offset_top = -304.0
+offset_right = 688.0
+offset_bottom = 696.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(0.12, 0.12)
+scale = Vector2(0.25, 0.25)
+value = 100.0
 fill_mode = 4
 texture_progress = ExtResource("6_cso3c")
 
@@ -85,14 +84,31 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -160.0
-offset_right = 840.0
-offset_bottom = 840.0
+offset_left = -312.0
+offset_top = -304.0
+offset_right = 688.0
+offset_bottom = 696.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(0.12, 0.12)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_34xq1")
 
-[connection signal="dialogueCommand" from="Player" to="Npc" method="dialogueCommandReceiver"]
-[connection signal="dialogueEnd" from="Npc" to="Player" method="onDialogueEnd"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.821856, 0.569696, 0, -0.569696, 0.821856, 0, 14.1973, 0)
+
+[node name="NpcSignalDirector" type="Node" parent="."]
+script = ExtResource("8_fqp7f")
+
+[node name="Npc2" parent="NpcSignalDirector" instance=ExtResource("4_3rljw")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1, 14.2091)
+name = "Allan"
+
+[node name="Npc" parent="NpcSignalDirector" instance=ExtResource("4_3rljw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.9569, 1, 35.8936)
+name = "Glep"
+
+[connection signal="dialogueCommand" from="Player" to="NpcSignalDirector" method="dialogueCommandRedirector"]
+[connection signal="dialogueEnd" from="NpcSignalDirector/Npc2" to="Player" method="onDialogueEnd"]
+[connection signal="teleport" from="NpcSignalDirector/Npc2" to="Player" method="teleport"]
+[connection signal="dialogueEnd" from="NpcSignalDirector/Npc" to="Player" method="onDialogueEnd"]
+[connection signal="teleport" from="NpcSignalDirector/Npc" to="Player" method="teleport"]

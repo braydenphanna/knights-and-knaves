@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dggxn2ndwpfgm"]
+[gd_scene load_steps=5 format=3 uid="uid://dggxn2ndwpfgm"]
 
-[ext_resource type="Script" path="res://scripts/NpcBehavior.cs" id="1_6a2mk"]
+[ext_resource type="Script" path="res://scripts/Npc.cs" id="1_6a2mk"]
 [ext_resource type="PackedScene" uid="uid://dtova27jy3ccu" path="res://assets/character3.blend" id="1_x0tel"]
-[ext_resource type="Script" path="res://scripts/DetectInteraction.cs" id="3_e1nd4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b12m0"]
 
@@ -21,7 +20,6 @@ shape = SubResource("CapsuleShape3D_b12m0")
 transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, -1, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
-script = ExtResource("3_e1nd4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CapsuleShape3D_6k1lo")

@@ -66,7 +66,6 @@ public partial class PlayerInput : CharacterBody3D
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector3 velocity = Velocity;
-
 		// Add the gravity.
 		if (!IsOnFloor())
 		{
@@ -170,5 +169,8 @@ public partial class PlayerInput : CharacterBody3D
 	public void setHealth(float h){
 		health = h;
 		healthBar.Value = h;
+	}
+	public void teleport(Vector3 pos){
+		this.GlobalPosition = pos;
 	}
 }
