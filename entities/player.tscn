@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://brdaqh36b5ql1"]
 
-[ext_resource type="Script" path="res://scripts/PlayerInput.cs" id="1_4f84t"]
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_4f84t"]
 [ext_resource type="Script" path="res://scripts/DetectInteraction.cs" id="2_js4d2"]
 [ext_resource type="PackedScene" uid="uid://ctrohgny1xvka" path="res://assets/charlie.blend" id="3_fh5v7"]
 

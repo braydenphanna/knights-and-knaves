@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bvmx4mtalchsc"
-path="res://.godot/imported/markers.blend-31488139e91bce5fef00ce182c7877ee.scn"
+uid="uid://deadq82vllcpw"
+path="res://.godot/imported/home.blend-c0b99469e68ae5eefc24f4bdd859d5e9.scn"
 
 [deps]
 
-source_file="res://levels/markers.blend"
-dest_files=["res://.godot/imported/markers.blend-31488139e91bce5fef00ce182c7877ee.scn"]
+source_file="res://levels/home.blend"
+dest_files=["res://.godot/imported/home.blend-c0b99469e68ae5eefc24f4bdd859d5e9.scn"]
 
 [params]
 
@@ -31,7 +31,14 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Material": {
+"use_external/enabled": false,
+"use_external/path": "res://Materials/blue.tres"
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

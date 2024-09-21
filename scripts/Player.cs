@@ -3,14 +3,13 @@ using System;
 using System.Linq;
 using System.Threading;
 
-public partial class PlayerInput : CharacterBody3D
+public partial class Player : CharacterBody3D
 {
 	public float Speed = 5.0f;
 	public float JumpVelocity = 4.5f;
 	private float health = 100f;
 	[Export] public float sensitivityHorizontal = 0.5f;
 	[Export] public float sensitivityVertical = 0.5f;
-
 	public bool wasAFK;
 	public bool inDialogue = false;
 	[Export] public double AFKTimer = 60;
@@ -151,7 +150,7 @@ public partial class PlayerInput : CharacterBody3D
 	{
 		wasAFK=true;
 	}
-	public void onDialogueEnd(){
+	public void endDialogue(){
 		inDialogue=false;
 		textBox.Visible = false;
 		dialogue.VisibleRatio = 0;

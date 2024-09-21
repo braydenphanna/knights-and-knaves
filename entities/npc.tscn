@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dggxn2ndwpfgm"]
+[gd_scene load_steps=4 format=3 uid="uid://dggxn2ndwpfgm"]
 
 [ext_resource type="Script" path="res://scripts/Npc.cs" id="1_6a2mk"]
-[ext_resource type="PackedScene" uid="uid://dtova27jy3ccu" path="res://assets/character3.blend" id="1_x0tel"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b12m0"]
 
@@ -9,15 +8,11 @@
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 editor_description = "Npc"
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_6a2mk")
 metadata/name = ""
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_b12m0")
-
-[node name="character3" parent="." instance=ExtResource("1_x0tel")]
-transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, -1, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 

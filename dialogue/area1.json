@@ -3,12 +3,16 @@
 		"1" : {"text":"Teleporting to the arena in 3..."},
 		"2" : {"text":"2..."},
 		"3" : {"text":"1..."},
-		"4" : {"event": "tele/0,1,0"}
+		"4" : {"event": "wrld/arena"}
 	},
 	"Allan":{
 		"1" : {"text":"Teleporting to home in 3..."},
 		"2" : {"text":"2..."},
 		"3" : {"text":"1..."},
-		"4" : {"event": "tele/-9,1,40"}
+		"4" : {"event": "wrld/home"}
+	},
+	"Boss":{
+		"1" : {"text":"Prepare to die"},
+		"2" : {"event":"cmbt"}
 	}
 }
