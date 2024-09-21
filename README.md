@@ -32,7 +32,7 @@
 - [X] NPC scene
 - [ ] HUD
 - [X] Dialogue system [Could possibly be refined some more, FIX BUG WITH AFK SPIN WHILE CHATTING]
-- [ ] Combat
+- [ ] Combat [FIX ARENA/MARKERS THING WHEN ARENA ISN'T STARTING WORLD]
 ### 0.2: Proof Of Concept [Advanced Mechanics]
 - [ ] Party System
 - [ ] UI
