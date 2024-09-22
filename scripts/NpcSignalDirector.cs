@@ -19,7 +19,7 @@ public partial class NpcSignalDirector : Node
 	public void spawnNpcs(string world){
 
 		for(int j = 0; j <GetChildCount();j++){
-			RemoveChild(GetChild(j));
+			GetChild(j).QueueFree();
 		}
 
 		Godot.FileAccess file = Godot.FileAccess.Open("res://levels/"+world+".json", Godot.FileAccess.ModeFlags.Read);
@@ -30,7 +30,7 @@ public partial class NpcSignalDirector : Node
 			try{
 				
 				Node3D temp = GD.Load<PackedScene>("res://entities/npc.tscn").Instantiate() as Node3D;
-				temp.AddChild(GD.Load<PackedScene>("res://assets/"+json.Data.AsGodotDictionary()[i.ToString()].AsGodotDictionary()["mesh"].ToString()+".blend").Instantiate());
+				(temp as Npc).setMesh(json.Data.AsGodotDictionary()[i.ToString()].AsGodotDictionary()["mesh"].ToString());
 				
 				string[] posRaw = json.Data.AsGodotDictionary()[i.ToString()].AsGodotDictionary()["pos"].ToString().Split(",");
 				Vector3 pos = new Vector3(posRaw[0].ToFloat(),posRaw[1].ToFloat(),posRaw[2].ToFloat());

@@ -1,18 +1,7 @@
 {
 	"Glep":{
-		"1" : {"text":"Teleporting to the arena in 3..."},
-		"2" : {"text":"2..."},
-		"3" : {"text":"1..."},
-		"4" : {"event": "wrld/arena"}
-	},
-	"Allan":{
-		"1" : {"text":"Teleporting to home in 3..."},
-		"2" : {"text":"2..."},
-		"3" : {"text":"1..."},
-		"4" : {"event": "wrld/home"}
-	},
-	"Boss":{
-		"1" : {"text":"Prepare to die"},
-		"2" : {"event":"cmbt"}
+		"1" : {"text":"You will regret that..."},
+		"2" : {"text":"Prepare to die!"},
+		"3" : {"event":"cmbt"}
 	}
 }

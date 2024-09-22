@@ -12,7 +12,7 @@ public partial class CombatController : Node
 	private Vector2 [,] worldPositions;
 	private Node3D markers;
 	[Export] Node3D tempMesh;
-	public override void _Ready()
+	public void init()
 	{
 		/*  0: Empty
 			1: Party member 1
@@ -44,14 +44,14 @@ public partial class CombatController : Node
 			}
 		}
 	}
-	public void initiateCombat(){
+	public void enterCombat(){
 		//create Random enemy array and call override with the parameter 
 		Enemy[] enemies = new Enemy[1];
 
-		initiateCombat(enemies);
+		enterCombat(enemies);
 	}
 
-	public void initiateCombat(Enemy[] enemies){
+	public void enterCombat(Enemy[] enemies){
 		Random r = new Random();
 
 		//Places n enemies randomly on blank map
@@ -97,9 +97,14 @@ public partial class CombatController : Node
 					case 0:
 						break;
 					case 1:
-						Vector2 spot = find(1);
-						Vector2 pos = worldPositions[(int) spot.X,(int) spot.Y];
-						GetParent().GetNode<Player>("Player").Position = new Vector3(pos.X, 1,pos.Y);
+						Vector2 pos = worldPositions[i,j];
+						Player temp  = GetParent().GetNode<Player>("Player");
+						temp.Position = new Vector3(pos.X, 1,pos.Y);
+						temp.Lock();
+						break;
+					default:
+					GD.Print(map[i,j]+" "+i+" "+j+" "+enemies);
+						spawnEnemy(map[i,j],i,j,enemies);
 						break;
 				}
 			}
@@ -126,5 +131,12 @@ public partial class CombatController : Node
 			}
 			GD.Print(line);
 		}
+	}
+	public void spawnEnemy(int identifier, int i, int j, Enemy[] enemies){
+		Vector2 pos = worldPositions[i,j];
+		Enemy temp = enemies[9-identifier];
+		AddChild(temp);
+		temp.Position = new Vector3(pos.X, 0,pos.Y);
+		temp.LookAt(GetParent().GetNode<Player>("Player").Position);
 	}
 }

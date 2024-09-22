@@ -11,7 +11,7 @@ public partial class Player : CharacterBody3D
 	[Export] public float sensitivityHorizontal = 0.5f;
 	[Export] public float sensitivityVertical = 0.5f;
 	public bool wasAFK;
-	public bool inDialogue = false;
+	public bool locked = false;
 	[Export] public double AFKTimer = 60;
 
 	private SpringArm3D springArm;
@@ -47,7 +47,7 @@ public partial class Player : CharacterBody3D
 	}
 	public override void _Input(InputEvent e)
 	{
-		if(e is InputEventMouseMotion && !inDialogue){
+		if(e is InputEventMouseMotion){
 			if(wasAFK){
 				springArm.Rotation = new Vector3(Mathf.DegToRad(-15),0,0);
 				wasAFK=false;
@@ -71,7 +71,7 @@ public partial class Player : CharacterBody3D
 			velocity += GetGravity() * (float)delta;
 		}
 
-		if (Input.IsActionJustPressed("jump") && IsOnFloor() && !inDialogue)
+		if (Input.IsActionJustPressed("jump") && IsOnFloor() && !locked)
 		{
 			velocity.Y = JumpVelocity;
 		}
@@ -83,31 +83,31 @@ public partial class Player : CharacterBody3D
 
 		if (Input.IsActionJustPressed("interact") && GetMeta("canInteract").AsBool())
 		{
-			if(!inDialogue && dialogue.VisibleRatio != 1)
+			if(!locked && dialogue.VisibleRatio != 1)
 			{
 
 				GD.Print("The player interacted with something");
 				EmitSignal(SignalName.dialogueCommand,area3D.GetOverlappingAreas().Last().GetParent().GetMeta("name"),"begin");
 				dialogue.VisibleRatio = 0;
 				textBox.Visible = true;
-				inDialogue = true;
+				locked = true;
 			}
-			else if(inDialogue && dialogue.VisibleRatio != 1){
+			else if(locked && dialogue.VisibleRatio != 1){
 				dialogue.VisibleRatio = 1;
 			}
-			else if(inDialogue && dialogue.VisibleRatio == 1)
+			else if(locked && dialogue.VisibleRatio == 1)
 			{
 				EmitSignal(SignalName.dialogueCommand,area3D.GetOverlappingAreas().Last().GetParent().GetMeta("name"),"next");
 				dialogue.VisibleRatio = 0;
 			}
-			else if(!inDialogue && dialogue.VisibleRatio == 1){
-				inDialogue = false;
+			else if(!locked && dialogue.VisibleRatio == 1){
+				locked = false;
 				textBox.Visible = false;
 				dialogue.VisibleRatio = 0;
 			}
 		}
 
-		if (Input.IsActionPressed("sprint") && !inDialogue)
+		if (Input.IsActionPressed("sprint") && !locked)
 		{
 			Speed = 10.0f;
 		}
@@ -117,7 +117,7 @@ public partial class Player : CharacterBody3D
 
 		Vector2 inputDir = Input.GetVector("left", "right", "foward", "back");
 		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
-		if (direction != Vector3.Zero&& !inDialogue)
+		if (direction != Vector3.Zero&& !locked)
 		{
 			velocity.X = direction.X * Speed;
 			velocity.Z = direction.Z * Speed;
@@ -142,7 +142,7 @@ public partial class Player : CharacterBody3D
 	}
 	public override void _Process(double delta)
 	{
-		if(inDialogue && dialogue.VisibleRatio != 1){
+		if(locked && dialogue.VisibleRatio != 1){
 			dialogue.VisibleRatio += (float)(0.2 * delta);
 		}
 	}
@@ -151,9 +151,12 @@ public partial class Player : CharacterBody3D
 		wasAFK=true;
 	}
 	public void endDialogue(){
-		inDialogue=false;
+		locked=false;
 		textBox.Visible = false;
 		dialogue.VisibleRatio = 0;
+	}
+	public void Lock(){
+		locked = true;
 	}
 	public void camSpin()
 	{

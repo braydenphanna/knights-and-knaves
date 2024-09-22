@@ -1,23 +1,22 @@
 [gd_scene load_steps=11 format=3 uid="uid://856crh1dl3gp"]
 
-[ext_resource type="Script" path="res://scripts/Main.cs" id="1_ebm8s"]
-[ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="1_nwok4"]
-[ext_resource type="Script" path="res://scripts/UI.cs" id="3_i1m5h"]
-[ext_resource type="Texture2D" uid="uid://bhgbjygoaux8d" path="res://assets/textbox.png" id="4_6vf83"]
-[ext_resource type="Texture2D" uid="uid://brvnxbt3p0kjv" path="res://assets/healthsphere.png" id="5_h456r"]
-[ext_resource type="Texture2D" uid="uid://csw2sm7l1xxn6" path="res://assets/char_avatar_new.png" id="6_ea71c"]
-[ext_resource type="Script" path="res://scripts/NpcSignalDirector.cs" id="7_skdos"]
-[ext_resource type="PackedScene" uid="uid://cvbiybole5wpl" path="res://levels/arena.blend" id="9_tq5wu"]
-[ext_resource type="Script" path="res://scripts/CombatController.cs" id="10_edtg6"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n8qod"]
+[ext_resource type="Script" path="res://scripts/Main.cs" id="1_qewfo"]
+[ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_tpy4b"]
+[ext_resource type="Script" path="res://scripts/UI.cs" id="3_o2k1t"]
+[ext_resource type="Texture2D" uid="uid://bhgbjygoaux8d" path="res://assets/textbox.png" id="4_v2gr0"]
+[ext_resource type="Texture2D" uid="uid://brvnxbt3p0kjv" path="res://assets/healthsphere.png" id="5_7jsh1"]
+[ext_resource type="Texture2D" uid="uid://csw2sm7l1xxn6" path="res://assets/char_avatar_new.png" id="6_wkxgf"]
+[ext_resource type="Script" path="res://scripts/NpcSignalDirector.cs" id="7_ajtft"]
+[ext_resource type="Script" path="res://scripts/CombatController.cs" id="8_rt7kh"]
+[ext_resource type="PackedScene" uid="uid://cfrymcmmq5l7j" path="res://entities/enemy.tscn" id="9_58s7i"]
+[ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://levels/home.blend" id="9_yisw7"]
 
 [node name="Main" type="Node3D"]
-script = ExtResource("1_ebm8s")
+script = ExtResource("1_qewfo")
 
-[node name="arena" parent="." instance=ExtResource("9_tq5wu")]
+[node name="home" parent="." instance=ExtResource("9_yisw7")]
 
-[node name="Player" parent="." instance=ExtResource("1_nwok4")]
+[node name="Player" parent="." instance=ExtResource("2_tpy4b")]
 transform = Transform3D(1, 0, 0, 0, 0.999709, -0.0241181, 0, 0.0241181, 0.999709, -9, 1, -4.4178)
 sensitivityHorizontal = 0.5
 sensitivityVertical = 0.5
@@ -29,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_i1m5h")
+script = ExtResource("3_o2k1t")
 
 [node name="TextBox" type="TextureRect" parent="UI"]
 layout_mode = 1
@@ -44,7 +43,7 @@ offset_right = 456.0
 offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("4_6vf83")
+texture = ExtResource("4_v2gr0")
 stretch_mode = 5
 
 [node name="Text" type="RichTextLabel" parent="UI/TextBox"]
@@ -71,7 +70,7 @@ grow_vertical = 0
 scale = Vector2(0.25, 0.25)
 value = 100.0
 fill_mode = 4
-texture_progress = ExtResource("5_h456r")
+texture_progress = ExtResource("5_7jsh1")
 
 [node name="Char1_Portrait" type="TextureRect" parent="UI"]
 layout_mode = 1
@@ -87,21 +86,17 @@ offset_bottom = 696.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("6_ea71c")
+texture = ExtResource("6_wkxgf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.821856, 0.569696, 0, -0.569696, 0.821856, 0, 14.1973, 0)
 
 [node name="NpcSignalDirector" type="Node" parent="."]
-script = ExtResource("7_skdos")
+script = ExtResource("7_ajtft")
 
-[node name="Enemy" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
-shape = SubResource("CapsuleShape3D_n8qod")
+[node name="Enemy" parent="." instance=ExtResource("9_58s7i")]
 
 [node name="CombatController" type="Node" parent="."]
-script = ExtResource("10_edtg6")
+script = ExtResource("8_rt7kh")
 
 [connection signal="dialogueCommand" from="Player" to="NpcSignalDirector" method="dialogueCommandRedirector"]

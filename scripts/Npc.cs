@@ -16,11 +16,11 @@ public partial class Npc : CharacterBody3D
 	private Json json;
 	private RichTextLabel text;
 	private string npcEvent = "";
-	private string world = "home";
+	private string mesh;
 	
 	public void init(string n)
 	{
-		animPlayer = GetNode<AnimationPlayer>("character3/AnimationPlayer");
+		animPlayer = GetNode<AnimationPlayer>(mesh+"/AnimationPlayer");
 		animPlayer.Play("Idle");
 		name = n;
 		SetMeta("name", name);
@@ -51,33 +51,16 @@ public partial class Npc : CharacterBody3D
 					   cmbt | engages combat                | Example: cmbt
 					*/
 					if(npcEvent.Substring(0,4) == "tele"){
-						string[] posRaw = npcEvent.Substring(5).Split(",");
-						Vector3 pos = new Vector3(posRaw[0].ToFloat(),posRaw[1].ToFloat(),posRaw[2].ToFloat());
+						(GetParent().GetParent()as Main).Tele(npcEvent.Substring(5));
 						pointer = 1;
-						
-						GetParent().GetParent().GetNode<Player>("Player").teleport(pos);
-						GetParent().GetParent().GetNode<Player>("Player").endDialogue();
 					}
 					else if(npcEvent.Substring(0,4) == "wrld"){
-						Node main = GetParent().GetParent();
-
-						main.GetChild(0).QueueFree();
-
-						world = npcEvent.Substring(5);
-						Node newWorld = GD.Load<PackedScene>("res://levels/"+world+".blend").Instantiate();
-						main.AddChild(newWorld);
-						main.MoveChild(newWorld, 0);
-
+						(GetParent().GetParent()as Main).Wrld(npcEvent.Substring(5));
 						pointer = 1;
-						
-						GetParent().GetParent().GetNode<Player>("Player").endDialogue();
-						(GetParent() as NpcSignalDirector).spawnNpcs(world);
 					}
 					else if(npcEvent.Substring(0,4) == "cmbt"){
+						(GetParent().GetParent()as Main).Cmbt();
 						pointer = 1;
-						
-						GetParent().GetParent().GetNode<Player>("Player").endDialogue();
-						GetParent().GetParent().GetNode<CombatController>("CombatController").initiateCombat(new Enemy[]{new Enemy((Node3D)GD.Load<PackedScene>("res://assets/character3.blend").Instantiate())});
 					}
 				}
 				catch(KeyNotFoundException){
@@ -87,9 +70,9 @@ public partial class Npc : CharacterBody3D
 			}
 		}
 	}
-	public string getWorld()
-	{
-		return world;
+	public void setMesh(string m){
+		AddChild(GD.Load<PackedScene>("res://assets/"+m+".blend").Instantiate());
+		mesh = m;
 	}
 	
 }
