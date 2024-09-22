@@ -48,17 +48,6 @@
 - C#
 - Blender
 - Visual Studio Code
-- Krita
-
-## Inspiration
-- FF7 + FF9
-- Xenogears
-- Kotor
-- Disco Elysium
-- Greed Island
-- Kingdom Hearts/Disney
-- Windwaker
-- Megaman Legends
 
 ## Images
 <img src="screenshots/charlie.png" width="400" />
