@@ -54,8 +54,8 @@ public partial class Player : CharacterBody3D
 			}
 			timer.WaitTime = AFKTimer;
 			timer.Start();
-			
 			InputEventMouseMotion m = (InputEventMouseMotion) e;
+				
 			RotateY(Mathf.DegToRad(-m.Relative.X*sensitivityHorizontal));
 			float rotVert = Mathf.DegToRad(-m.Relative.Y*sensitivityVertical);
 			springArm.RotateX(rotVert);
@@ -155,9 +155,6 @@ public partial class Player : CharacterBody3D
 		textBox.Visible = false;
 		dialogue.VisibleRatio = 0;
 	}
-	public void Lock(){
-		locked = true;
-	}
 	public void camSpin()
 	{
 		springArm.Rotation = new Godot.Vector3(Mathf.DegToRad(-25),springArm.Rotation.Y,springArm.Rotation.Z);
@@ -174,5 +171,8 @@ public partial class Player : CharacterBody3D
 	}
 	public void teleport(Vector3 pos){
 		this.GlobalPosition = pos;
+	}
+	public void Lock(){
+		locked = true;
 	}
 }

@@ -54,6 +54,7 @@ public partial class CombatController : Node
 	public void enterCombat(Enemy[] enemies){
 		Random r = new Random();
 
+
 		//Places n enemies randomly on blank map
 		int e = 9;
 		while (9-e<enemies.Length){
@@ -111,6 +112,7 @@ public partial class CombatController : Node
 		}
 
 		print2DArray(map);
+
 	}
 
 	public Vector2 find(int n){
