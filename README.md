@@ -30,7 +30,7 @@
 - [X] Build test scene [Improvement Needed]
 - [X] Temporary character model with basic animation
 - [X] NPC scene
-- [X] Cel-Shader/Remove baked in shading
+- [X] Cel-Shader [Could be improved]
 - [ ] HUD
 - [X] Dialogue system [Could possibly be refined some more, FIX BUG WITH AFK SPIN WHILE CHATTING]
 - [ ] Combat
