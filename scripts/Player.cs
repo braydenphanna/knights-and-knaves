@@ -28,7 +28,7 @@ public partial class Player : CharacterBody3D
 	{
 		springArm = GetNode<SpringArm3D>("SpringArm3D");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-		animPlayer = GetNode<AnimationPlayer>("charlie/AnimationPlayer");
+		animPlayer = GetNode<AnimationPlayer>("charlie2/AnimationPlayer");
 		UI = GetParent().GetNode<Control>("UI");
 		textBox = UI.GetNode<TextureRect>("TextBox");
 		dialogue = textBox.GetNode<RichTextLabel>("Text");

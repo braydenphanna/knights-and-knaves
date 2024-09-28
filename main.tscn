@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://856crh1dl3gp"]
+[gd_scene load_steps=14 format=3 uid="uid://856crh1dl3gp"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_qewfo"]
 [ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_tpy4b"]
@@ -11,15 +11,27 @@
 [ext_resource type="PackedScene" uid="uid://cfrymcmmq5l7j" path="res://entities/enemy.tscn" id="9_58s7i"]
 [ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://levels/home.blend" id="9_yisw7"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_paln1"]
+
+[sub_resource type="Sky" id="Sky_k7l3t"]
+sky_material = SubResource("ProceduralSkyMaterial_paln1")
+
+[sub_resource type="Environment" id="Environment_jho0b"]
+sky = SubResource("Sky_k7l3t")
+ambient_light_source = 3
+ambient_light_color = Color(0.753984, 0.753984, 0.753984, 1)
+tonemap_mode = 2
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_qewfo")
 
 [node name="home" parent="." instance=ExtResource("9_yisw7")]
 
 [node name="Player" parent="." instance=ExtResource("2_tpy4b")]
-transform = Transform3D(1, 0, 0, 0, 0.999709, -0.0241181, 0, 0.0241181, 0.999709, -9, 1, -4.4178)
+transform = Transform3D(-0.994168, 0.00260097, 0.107812, 0, 0.999709, -0.0241181, -0.107843, -0.0239774, -0.993879, -9, 1, -4.4178)
 sensitivityHorizontal = 0.5
 sensitivityVertical = 0.5
+AFKTimer = 10.0
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -88,9 +100,6 @@ grow_vertical = 0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_wkxgf")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.821856, 0.569696, 0, -0.569696, 0.821856, 0, 14.1973, 0)
-
 [node name="NpcSignalDirector" type="Node" parent="."]
 script = ExtResource("7_ajtft")
 
@@ -98,5 +107,11 @@ script = ExtResource("7_ajtft")
 
 [node name="CombatController" type="Node" parent="."]
 script = ExtResource("8_rt7kh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jho0b")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.811431, 0.584448, 0, -0.584448, 0.811431, 0, 17.502, 0)
 
 [connection signal="dialogueCommand" from="Player" to="NpcSignalDirector" method="dialogueCommandRedirector"]

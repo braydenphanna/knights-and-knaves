@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1kcy8al51d5a"]
+
+[ext_resource type="PackedScene" uid="uid://ctrohgny1xvka" path="res://assets/charlie.blend" id="1_7n72h"]
+[ext_resource type="Shader" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="2_7ms0w"]
+[ext_resource type="Texture2D" uid="uid://b8einf846akq8" path="res://assets/tex_charlie2.png" id="3_lrf21"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7lixs"]
+render_priority = 0
+shader = ExtResource("2_7ms0w")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+shader_parameter/albedo_texture = ExtResource("3_lrf21")
+
+[node name="charlie" instance=ExtResource("1_7n72h")]
+
+[node name="Head" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_7lixs")
