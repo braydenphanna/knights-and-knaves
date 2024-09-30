@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ddsdfmkw7pjvt"
-path="res://.godot/imported/character3.blend-67e73ab4647bb7fc3d3cea06d6a9a9ff.scn"
+uid="uid://bx4w06rp4l6mx"
+path="res://.godot/imported/circle.blend-5a48f0e64bd3e3cb982b096a9144b57e.scn"
 
 [deps]
 
-source_file="res://assets/character3.blend"
-dest_files=["res://.godot/imported/character3.blend-67e73ab4647bb7fc3d3cea06d6a9a9ff.scn"]
+source_file="res://assets/circle.blend"
+dest_files=["res://.godot/imported/circle.blend-5a48f0e64bd3e3cb982b096a9144b57e.scn"]
 
 [params]
 

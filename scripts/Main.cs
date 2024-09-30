@@ -33,9 +33,9 @@ public partial class Main : Node3D
 		GetNode<CombatController>("CombatController").init();
 		
 		GetNode<Player>("Player").endDialogue();
-		GetNode<CombatController>("CombatController").enterCombat(new Enemy[]{new Enemy((Node3D)GD.Load<PackedScene>("res://assets/character3.blend").Instantiate()),
-																			new Enemy((Node3D)GD.Load<PackedScene>("res://assets/character3.blend").Instantiate()),
-																			new Enemy((Node3D)GD.Load<PackedScene>("res://assets/character3.blend").Instantiate())});
+		GetNode<CombatController>("CombatController").enterCombat(new Enemy[]{new Enemy(),
+																			new Enemy(),
+																			new Enemy()});
 																		
 	}
 }

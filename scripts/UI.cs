@@ -7,6 +7,7 @@ public partial class UI : Control
 	public override void _Ready()
 	{
 		GetNode<TextureRect>("TextBox").Visible=false;
+		GetNode<TextureRect>("Crosshair").Visible=false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -17,6 +17,9 @@ sensitivityHorizontal = 0.2
 sensitivityVertical = 0.2
 metadata/canInteract = false
 
+[node name="charlie2" parent="." instance=ExtResource("3_k61r8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("2_js4d2")
 
@@ -35,9 +38,6 @@ margin = 0.2
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.988252, -0.152831, 0, 0.152831, 0.988252, 0, 0, 0)
 current = true
-
-[node name="charlie2" parent="." instance=ExtResource("3_k61r8")]
-transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, -1, 0)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="onBodyEntered"]
 [connection signal="body_exited" from="Area3D" to="Area3D" method="onBodyExited"]

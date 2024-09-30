@@ -102,6 +102,10 @@ public partial class CombatController : Node
 						Player temp  = GetParent().GetNode<Player>("Player");
 						temp.Position = new Vector3(pos.X, 1,pos.Y);
 						temp.Lock();
+						temp.LookAt(new Vector3(0,1,0));
+						temp.GetNode<Camera3D>("SpringArm3D/Camera3D").Current=false;
+						(GetParent().GetNode<CharacterBody3D>("FreeCam") as FreeCam).init();
+						GetParent().GetNode<TextureRect>("UI/Crosshair").Visible=true;
 						break;
 					default:
 					GD.Print(map[i,j]+" "+i+" "+j+" "+enemies);
@@ -111,7 +115,6 @@ public partial class CombatController : Node
 			}
 		}
 
-		print2DArray(map);
 
 	}
 
@@ -136,9 +139,11 @@ public partial class CombatController : Node
 	}
 	public void spawnEnemy(int identifier, int i, int j, Enemy[] enemies){
 		Vector2 pos = worldPositions[i,j];
-		Enemy temp = enemies[9-identifier];
+		Enemy temp = GD.Load<PackedScene>("res://entities/enemy.tscn").Instantiate() as Enemy;
 		AddChild(temp);
-		temp.Position = new Vector3(pos.X, 0,pos.Y);
+		temp.setMesh("character3");
+		enemies[9-identifier] = temp;
+		temp.Position = new Vector3(pos.X, 1,pos.Y);
 		temp.LookAt(GetParent().GetNode<Player>("Player").Position);
 	}
 }

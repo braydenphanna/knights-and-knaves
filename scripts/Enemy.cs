@@ -3,13 +3,12 @@ using System;
 
 public partial class Enemy : CharacterBody3D
 {
-	private Node3D mesh;
 	private AnimationPlayer animPlayer;
-	public Enemy(Node3D m)
-	{
-		this.mesh = m;
-		AddChild(this.mesh);
-		animPlayer = GetNode<AnimationPlayer>(mesh.Name+"/AnimationPlayer");
+	public void setMesh(string m){
+		Node mesh = GD.Load<PackedScene>("res://assets/"+m+".blend").Instantiate();
+		AddChild(mesh);
+		MoveChild(mesh,0);
+		animPlayer = GetNode<AnimationPlayer>(m+"/AnimationPlayer");
 		animPlayer.Play("Idle");
 	}
 }

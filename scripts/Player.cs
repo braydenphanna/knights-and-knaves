@@ -47,7 +47,7 @@ public partial class Player : CharacterBody3D
 	}
 	public override void _Input(InputEvent e)
 	{
-		if(e is InputEventMouseMotion){
+		if(e is InputEventMouseMotion&&!locked){
 			if(wasAFK){
 				springArm.Rotation = new Vector3(Mathf.DegToRad(-15),0,0);
 				wasAFK=false;

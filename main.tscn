@@ -1,15 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://856crh1dl3gp"]
+[gd_scene load_steps=17 format=3 uid="uid://856crh1dl3gp"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_qewfo"]
 [ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_tpy4b"]
+[ext_resource type="Script" path="res://scripts/FreeCam.cs" id="3_fnwek"]
 [ext_resource type="Script" path="res://scripts/UI.cs" id="3_o2k1t"]
 [ext_resource type="Texture2D" uid="uid://bhgbjygoaux8d" path="res://assets/textbox.png" id="4_v2gr0"]
 [ext_resource type="Texture2D" uid="uid://brvnxbt3p0kjv" path="res://assets/healthsphere.png" id="5_7jsh1"]
 [ext_resource type="Texture2D" uid="uid://csw2sm7l1xxn6" path="res://assets/char_avatar_new.png" id="6_wkxgf"]
 [ext_resource type="Script" path="res://scripts/NpcSignalDirector.cs" id="7_ajtft"]
 [ext_resource type="Script" path="res://scripts/CombatController.cs" id="8_rt7kh"]
-[ext_resource type="PackedScene" uid="uid://cfrymcmmq5l7j" path="res://entities/enemy.tscn" id="9_58s7i"]
+[ext_resource type="Texture2D" uid="uid://c5kxdlrled7gr" path="res://assets/crosshair.png" id="9_5e66t"]
 [ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://levels/home.blend" id="9_yisw7"]
+[ext_resource type="PackedScene" uid="uid://cybi5r0k14b4o" path="res://assets/house.blend" id="12_b0nr2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v178u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_paln1"]
 
@@ -26,6 +30,18 @@ tonemap_mode = 2
 script = ExtResource("1_qewfo")
 
 [node name="home" parent="." instance=ExtResource("9_yisw7")]
+
+[node name="FreeCam" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.95192, 0)
+script = ExtResource("3_fnwek")
+
+[node name="Camera3D" type="Camera3D" parent="FreeCam"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FreeCam"]
+shape = SubResource("SphereShape3D_v178u")
+
+[node name="RayCast3D" type="RayCast3D" parent="FreeCam"]
+target_position = Vector3(0, 0, -100)
 
 [node name="Player" parent="." instance=ExtResource("2_tpy4b")]
 transform = Transform3D(-0.994168, 0.00260097, 0.107812, 0, 0.999709, -0.0241181, -0.107843, -0.0239774, -0.993879, -9, 1, -4.4178)
@@ -100,10 +116,23 @@ grow_vertical = 0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_wkxgf")
 
+[node name="Crosshair" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_5e66t")
+
 [node name="NpcSignalDirector" type="Node" parent="."]
 script = ExtResource("7_ajtft")
-
-[node name="Enemy" parent="." instance=ExtResource("9_58s7i")]
 
 [node name="CombatController" type="Node" parent="."]
 script = ExtResource("8_rt7kh")
@@ -112,6 +141,9 @@ script = ExtResource("8_rt7kh")
 environment = SubResource("Environment_jho0b")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.811431, 0.584448, 0, -0.584448, 0.811431, 0, 17.502, 0)
+transform = Transform3D(1, 0, 0, 0, 0.438512, 0.898725, 0, -0.898725, 0.438512, 0, 17.502, 0)
+
+[node name="house2" parent="." instance=ExtResource("12_b0nr2")]
+transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, -1.30694, 0.0500002, 6.99933)
 
 [connection signal="dialogueCommand" from="Player" to="NpcSignalDirector" method="dialogueCommandRedirector"]
