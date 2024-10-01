@@ -25,13 +25,11 @@ shader_parameter/color_gradient = SubResource("GradientTexture1D_j85nx")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/2/rotation = Quaternion(0.0533808, 0.0632228, 0.761454, 0.642916)
-bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(-0.0827323, -0.00141183, -0.017, 0.996426)
 bones/4/rotation = Quaternion(1.71982e-09, 1.02673e-07, -0.0189049, 0.999821)
 bones/5/rotation = Quaternion(0.0292945, -0.00365046, 0.0113167, 0.9995)
 bones/5/scale = Vector3(1, 1, 1)
 bones/8/rotation = Quaternion(0.0533808, -0.0632228, -0.761454, 0.642916)
-bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(-0.0827323, 0.00141183, 0.017, 0.996426)
 bones/10/rotation = Quaternion(1.71982e-09, -1.02673e-07, 0.0189049, 0.999821)
 bones/11/rotation = Quaternion(0.0292945, 0.00365046, -0.0113167, 0.9995)

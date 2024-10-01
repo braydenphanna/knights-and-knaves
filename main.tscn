@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://856crh1dl3gp"]
+[gd_scene load_steps=21 format=3 uid="uid://856crh1dl3gp"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_qewfo"]
 [ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_tpy4b"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c5kxdlrled7gr" path="res://assets/crosshair.png" id="9_5e66t"]
 [ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://levels/home.blend" id="9_yisw7"]
 [ext_resource type="PackedScene" uid="uid://cybi5r0k14b4o" path="res://assets/house.blend" id="12_b0nr2"]
+[ext_resource type="PackedScene" uid="uid://dy36g11w0644m" path="res://levels/town1.blend" id="13_xm0nx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v178u"]
 
@@ -25,6 +26,12 @@ sky = SubResource("Sky_k7l3t")
 ambient_light_source = 3
 ambient_light_color = Color(0.753984, 0.753984, 0.753984, 1)
 tonemap_mode = 2
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p4cdt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nlm7v"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2624c"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_qewfo")
@@ -44,7 +51,7 @@ shape = SubResource("SphereShape3D_v178u")
 target_position = Vector3(0, 0, -100)
 
 [node name="Player" parent="." instance=ExtResource("2_tpy4b")]
-transform = Transform3D(-0.994168, 0.00260097, 0.107812, 0, 0.999709, -0.0241181, -0.107843, -0.0239774, -0.993879, -9, 1, -4.4178)
+transform = Transform3D(-0.994168, 0.00260097, 0.107812, 0, 0.999709, -0.0241181, -0.107843, -0.0239774, -0.993879, -19.4716, 6.27049, 5.62462)
 sensitivityHorizontal = 0.5
 sensitivityVertical = 0.5
 AFKTimer = 10.0
@@ -145,5 +152,20 @@ transform = Transform3D(1, 0, 0, 0, 0.438512, 0.898725, 0, -0.898725, 0.438512, 
 
 [node name="house2" parent="." instance=ExtResource("12_b0nr2")]
 transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, -1.30694, 0.0500002, 6.99933)
+
+[node name="town1" parent="." instance=ExtResource("13_xm0nx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1442, 4.00598, 3.19844)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(3.42478, 0.516653, 0, -2.06661, 0.856195, 0, 0, 0, 1, -7.52822, 1.91895, -0.761511)
+physics_material_override = SubResource("PhysicsMaterial_p4cdt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 0.05, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_nlm7v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_2624c")
+skeleton = NodePath("../..")
 
 [connection signal="dialogueCommand" from="Player" to="NpcSignalDirector" method="dialogueCommandRedirector"]
