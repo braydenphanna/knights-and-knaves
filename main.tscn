@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://856crh1dl3gp"]
+[gd_scene load_steps=22 format=3 uid="uid://856crh1dl3gp"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_qewfo"]
 [ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_tpy4b"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://levels/home.blend" id="9_yisw7"]
 [ext_resource type="PackedScene" uid="uid://cybi5r0k14b4o" path="res://assets/house.blend" id="12_b0nr2"]
 [ext_resource type="PackedScene" uid="uid://dy36g11w0644m" path="res://levels/town1.blend" id="13_xm0nx"]
+[ext_resource type="PackedScene" uid="uid://bjxd6jdv3k1rd" path="res://assets/featherblade.blend" id="14_q54ow"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v178u"]
 
@@ -167,5 +168,8 @@ shape = SubResource("BoxShape3D_nlm7v")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_2624c")
 skeleton = NodePath("../..")
+
+[node name="featherblade" parent="." instance=ExtResource("14_q54ow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0547, 6.63479, 13.5977)
 
 [connection signal="dialogueCommand" from="Player" to="NpcSignalDirector" method="dialogueCommandRedirector"]

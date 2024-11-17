@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_4f84t"]
 [ext_resource type="Script" path="res://scripts/DetectInteraction.cs" id="2_js4d2"]
-[ext_resource type="PackedScene" uid="uid://cp4qi5askhqka" path="res://assets/charlie_2.tscn" id="3_k61r8"]
+[ext_resource type="PackedScene" uid="uid://iaqw7stslnjy" path="res://assets/charlie_3.tscn" id="3_x22iw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_66wav"]
 size = Vector3(1, 2, 2)
@@ -16,9 +16,6 @@ script = ExtResource("1_4f84t")
 sensitivityHorizontal = 0.2
 sensitivityVertical = 0.2
 metadata/canInteract = false
-
-[node name="charlie2" parent="." instance=ExtResource("3_k61r8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("2_js4d2")
@@ -38,6 +35,9 @@ margin = 0.2
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.988252, -0.152831, 0, 0.152831, 0.988252, 0, 0, 0)
 current = true
+
+[node name="charlie2" parent="." instance=ExtResource("3_x22iw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="onBodyEntered"]
 [connection signal="body_exited" from="Area3D" to="Area3D" method="onBodyExited"]

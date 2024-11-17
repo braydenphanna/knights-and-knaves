@@ -1,25 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp4qi5askhqka"]
+[gd_scene load_steps=2 format=3 uid="uid://cp4qi5askhqka"]
 
 [ext_resource type="PackedScene" uid="uid://vn3am32xxi3n" path="res://assets/charlie2.blend" id="1_ftxa7"]
-[ext_resource type="Shader" uid="uid://bl5qs1tstggyw" path="res://assets/celshadingcharlie.tres" id="2_qoid4"]
-[ext_resource type="Texture2D" uid="uid://b8einf846akq8" path="res://assets/tex_charlie2.png" id="3_dmlj6"]
-
-[sub_resource type="Gradient" id="Gradient_bowx2"]
-offsets = PackedFloat32Array(0.5, 0.51)
-colors = PackedColorArray(0.140447, 0.140447, 0.140447, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_j85nx"]
-gradient = SubResource("Gradient_bowx2")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7xnu"]
-render_priority = 0
-shader = ExtResource("2_qoid4")
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("3_dmlj6")
-shader_parameter/color_gradient = SubResource("GradientTexture1D_j85nx")
 
 [node name="charlie2" instance=ExtResource("1_ftxa7")]
 
@@ -40,6 +21,3 @@ bones/15/scale = Vector3(1, 1, 1)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/rotation = Quaternion(0.00661934, 0.000272401, -0.0343188, 0.999389)
 bones/19/scale = Vector3(1, 1, 1)
-
-[node name="Mesh" parent="Armature/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_a7xnu")

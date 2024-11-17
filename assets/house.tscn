@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cybi5r0k14b4o" path="res://assets/house.blend" id="1_wcyg7"]
 [ext_resource type="Shader" uid="uid://bl5qs1tstggyw" path="res://assets/celshadingcharlie.tres" id="2_iu7hs"]
-[ext_resource type="Texture2D" uid="uid://bye8a05s3ofcm" path="res://assets/Door.png" id="3_d8mwd"]
+[ext_resource type="Texture2D" uid="uid://b1ek0ku0l26dk" path="res://assets/Door.png" id="3_d8mwd"]
 [ext_resource type="Texture2D" uid="uid://bpbqctteomu58" path="res://assets/UnderRoof.png" id="4_15axt"]
 [ext_resource type="Texture2D" uid="uid://bqotyds6mppde" path="res://assets/Window1.png" id="5_vm7ex"]
 [ext_resource type="Texture2D" uid="uid://pleuea8jchss" path="res://assets/Window2.png" id="6_bm12f"]
