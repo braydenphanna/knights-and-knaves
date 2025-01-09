@@ -10,14 +10,10 @@ public partial class Player : CharacterBody3D
 	private float health = 100f;
 	[Export] public float sensitivityHorizontal = 0.5f;
 	[Export] public float sensitivityVertical = 0.5f;
-	public bool wasAFK;
 	public bool locked = false;
-	[Export] public double AFKTimer = 60;
-
-	private SpringArm3D springArm;
 	private Area3D area3D;
+	private Camera3D cam;
 	private AnimationPlayer animPlayer;
-	private Godot.Timer timer;
 	private Control UI;
 	private TextureRect textBox;
 	private TextureProgressBar healthBar;
@@ -26,41 +22,17 @@ public partial class Player : CharacterBody3D
 	public delegate void dialogueCommandEventHandler(string name, string command);
 	public override void _Ready()
 	{
-		springArm = GetNode<SpringArm3D>("SpringArm3D");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		animPlayer = GetNode<AnimationPlayer>("charlie2/AnimationPlayer");
 		UI = GetParent().GetNode<Control>("UI");
 		textBox = UI.GetNode<TextureRect>("TextBox");
 		dialogue = textBox.GetNode<RichTextLabel>("Text");
 		healthBar = UI.GetNode<TextureProgressBar>("Char1_Health");
+		cam = GetParent().GetNode<Camera3D>("Camera3D");
 		healthBar.Value = health;
 		dialogue.VisibleRatio = 0;
 		area3D = GetNode<Area3D>("Area3D");
-		
-		timer = new Godot.Timer();
-		AddChild(timer);
-		timer.Timeout += onTimeout;
-
-		timer.WaitTime = AFKTimer;
-		timer.OneShot = true;
-		timer.Start();
-	}
-	public override void _Input(InputEvent e)
-	{
-		if(e is InputEventMouseMotion&&!locked){
-			if(wasAFK){
-				springArm.Rotation = new Vector3(Mathf.DegToRad(-15),0,0);
-				wasAFK=false;
-			}
-			timer.WaitTime = AFKTimer;
-			timer.Start();
-			InputEventMouseMotion m = (InputEventMouseMotion) e;
-				
-			RotateY(Mathf.DegToRad(-m.Relative.X*sensitivityHorizontal));
-			float rotVert = Mathf.DegToRad(-m.Relative.Y*sensitivityVertical);
-			springArm.RotateX(rotVert);
-			springArm.Rotation = springArm.Rotation.Clamp((float)Mathf.DegToRad(-90),(float)Mathf.DegToRad(22.5));
-		}
+		RotateY(cam.Rotation.Y);
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -115,15 +87,15 @@ public partial class Player : CharacterBody3D
 			Speed = 5.0f;
 		}
 
-		Vector2 inputDir = Input.GetVector("left", "right", "foward", "back");
-		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+		Vector2 inputDir = Input.GetVector("left", "right", "forward", "back");
+		Vector3 direction = cam.Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y).Normalized();
 		if (direction != Vector3.Zero&& !locked)
 		{
+			GD.Print("X: "+ direction.X+ " | Y: "+ direction.Y+ " | Z: "+ direction.Z);
+			this.Rotation = new Vector3(0,(float)Math.Atan2(-direction.X,-direction.Z),0);
 			velocity.X = direction.X * Speed;
 			velocity.Z = direction.Z * Speed;
 			animPlayer.Play("Walk");
-			timer.WaitTime =10;
-			timer.Start();
 		}
 		else
 		{
@@ -131,10 +103,6 @@ public partial class Player : CharacterBody3D
 			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
 			
 			animPlayer.Play("Idle");
-			if(timer.IsStopped())
-			{
-				camSpin();
-			}
 		}
 
 		Velocity = velocity;
@@ -146,19 +114,10 @@ public partial class Player : CharacterBody3D
 			dialogue.VisibleRatio += (float)(0.2 * delta);
 		}
 	}
-	public void onTimeout()
-	{
-		wasAFK=true;
-	}
 	public void endDialogue(){
 		locked=false;
 		textBox.Visible = false;
 		dialogue.VisibleRatio = 0;
-	}
-	public void camSpin()
-	{
-		springArm.Rotation = new Godot.Vector3(Mathf.DegToRad(-25),springArm.Rotation.Y,springArm.Rotation.Z);
-		springArm.RotateY(Mathf.DegToRad(-0.25f));
 	}
 	
 	//getters and setters

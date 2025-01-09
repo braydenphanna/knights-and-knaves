@@ -1,7 +1,6 @@
 {
 	"Glep":{
-		"1" : {"text":"You will regret that..."},
-		"2" : {"text":"Prepare to die!"},
-		"3" : {"event":"cmbt"}
+		"1" : {"text":"Sup..."},
+		"2" : {"text":"I've never seen you around before."}
 	}
 }
