@@ -11,7 +11,8 @@
 ## Roadmap
 ### 0.1: Proof Of Concept [Basic Mechanics]
 - [X] 3D movement
-- [ ] Finish implementing fixed camera angles [invisible area colliders for each angle; 1 cam or multiple?]
+- [X] Implement fixed camera angle system
+- [ ] Improve camera system by adding advanced types of cameras (ie. follow the player, rotate towards the player, etc.)
 - [ ] Create some test pre-rendered backgrounds for each camera angle in blender as well as a collison mesh for the area
 - [X] Build test scene [Improvement Needed]
 - [X] Temporary character model with basic animation
