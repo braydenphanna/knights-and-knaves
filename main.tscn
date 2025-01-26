@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://856crh1dl3gp"]
+[gd_scene load_steps=21 format=3 uid="uid://856crh1dl3gp"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_qewfo"]
 [ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_tpy4b"]
@@ -10,8 +10,9 @@
 [ext_resource type="Script" path="res://scripts/CombatController.cs" id="8_rt7kh"]
 [ext_resource type="Texture2D" uid="uid://c5kxdlrled7gr" path="res://assets/crosshair.png" id="9_5e66t"]
 [ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://levels/home.blend" id="9_yisw7"]
+[ext_resource type="PackedScene" uid="uid://cw4wqkayuwerl" path="res://levels/colorleveltest.tscn" id="12_8hd6n"]
 [ext_resource type="PackedScene" uid="uid://cybi5r0k14b4o" path="res://assets/house.blend" id="12_b0nr2"]
-[ext_resource type="PackedScene" uid="uid://dy36g11w0644m" path="res://levels/town1.blend" id="13_xm0nx"]
+[ext_resource type="PackedScene" uid="uid://jidsowodb7f6" path="res://levels/halltestlevel.tscn" id="12_ojgbk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_paln1"]
 
@@ -30,13 +31,16 @@ tonemap_mode = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2624c"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_js8q8"]
+size = Vector3(1, 2, 2)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_qewfo")
 
 [node name="home" parent="." instance=ExtResource("9_yisw7")]
 
 [node name="Player" parent="." instance=ExtResource("2_tpy4b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4716, 6.27049, 5.62462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3144, 1.27049, 29.168)
 sensitivityHorizontal = 0.5
 sensitivityVertical = 0.5
 
@@ -137,9 +141,6 @@ transform = Transform3D(1, 0, 0, 0, 0.438512, 0.898725, 0, -0.898725, 0.438512, 
 [node name="house2" parent="." instance=ExtResource("12_b0nr2")]
 transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, -1.30694, 0.0500002, 6.99933)
 
-[node name="town1" parent="." instance=ExtResource("13_xm0nx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1442, 4.00598, 3.19844)
-
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(3.42478, 0.516653, 0, -2.06661, 0.856195, 0, 0, 0, 1, -7.52822, 1.91895, -0.761511)
 physics_material_override = SubResource("PhysicsMaterial_p4cdt")
@@ -153,6 +154,17 @@ mesh = SubResource("PlaneMesh_2624c")
 skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.388369, -0.238503, 0.890105, -1.08089e-08, 0.965926, 0.258819, -0.921504, -0.100517, 0.375135, -11.1478, 5.63585, 12.0414)
+transform = Transform3D(1, 0, 0, 0, 0.389896, 0.920859, 0, -0.920859, 0.389896, 0, 0, 0)
+current = true
+
+[node name="halltestlevel" parent="." instance=ExtResource("12_ojgbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5038, 0, -11.9402)
+
+[node name="colorleveltest" parent="." instance=ExtResource("12_8hd6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.8339, 1, 29.4695)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_js8q8")
 
 [connection signal="dialogueCommand" from="Player" to="NpcSignalDirector" method="dialogueCommandRedirector"]

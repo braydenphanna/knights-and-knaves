@@ -91,7 +91,6 @@ public partial class Player : CharacterBody3D
 		Vector3 direction = cam.Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y).Normalized();
 		if (direction != Vector3.Zero&& !locked)
 		{
-			GD.Print("X: "+ direction.X+ " | Y: "+ direction.Y+ " | Z: "+ direction.Z);
 			this.Rotation = new Vector3(0,(float)Math.Atan2(-direction.X,-direction.Z),0);
 			velocity.X = direction.X * Speed;
 			velocity.Z = direction.Z * Speed;

@@ -104,7 +104,6 @@ public partial class CombatController : Node
 						temp.Lock();
 						temp.LookAt(new Vector3(0,1,0));
 						temp.GetNode<Camera3D>("SpringArm3D/Camera3D").Current=false;
-						(GetParent().GetNode<CharacterBody3D>("FreeCam") as FreeCam).init();
 						GetParent().GetNode<TextureRect>("UI/Crosshair").Visible=true;
 						break;
 					default:

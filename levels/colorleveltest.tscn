@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw4wqkayuwerl"]
+
+[ext_resource type="PackedScene" uid="uid://df6k45hc7d0is" path="res://levels/colorleveltest.blend" id="1_8u172"]
+[ext_resource type="Script" path="res://scripts/CameraAngleController.cs" id="2_hab12"]
+
+[node name="colorleveltest" instance=ExtResource("1_8u172")]
+script = ExtResource("2_hab12")

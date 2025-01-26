@@ -14,7 +14,7 @@ bone_idx = 11
 transform = Transform3D(2, 3.01749e-07, 1.75321e-07, -1.68337e-07, 7.45058e-08, 2, 2.90573e-07, -2, 2.23517e-08, 0, 0.122033, -1.86076)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.792277, 0.295592)
+transform = Transform3D(1, 0, 0, 0, 1, -2.23517e-08, 0, 2.23517e-08, 1, 0, 1, 2.98023e-08)
 bone_name = "Bone.005"
 bone_idx = 1
 
