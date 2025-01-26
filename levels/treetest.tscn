@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbky2jia4oosn"]
+
+[ext_resource type="PackedScene" uid="uid://ctu7fqovd7kyp" path="res://levels/treetest.blend" id="1_ci61f"]
+[ext_resource type="Script" path="res://scripts/CameraAngleController.cs" id="2_ddbqj"]
+
+[node name="treetest" instance=ExtResource("1_ci61f")]
+script = ExtResource("2_ddbqj")

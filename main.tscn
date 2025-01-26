@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://856crh1dl3gp"]
+[gd_scene load_steps=22 format=3 uid="uid://856crh1dl3gp"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_qewfo"]
 [ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_tpy4b"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cw4wqkayuwerl" path="res://levels/colorleveltest.tscn" id="12_8hd6n"]
 [ext_resource type="PackedScene" uid="uid://cybi5r0k14b4o" path="res://assets/house.blend" id="12_b0nr2"]
 [ext_resource type="PackedScene" uid="uid://jidsowodb7f6" path="res://levels/halltestlevel.tscn" id="12_ojgbk"]
+[ext_resource type="PackedScene" uid="uid://dbky2jia4oosn" path="res://levels/treetest.tscn" id="14_jxna2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_paln1"]
 
@@ -40,7 +41,7 @@ script = ExtResource("1_qewfo")
 [node name="home" parent="." instance=ExtResource("9_yisw7")]
 
 [node name="Player" parent="." instance=ExtResource("2_tpy4b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3144, 1.27049, 29.168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.3144, 1.27049, -13.832)
 sensitivityHorizontal = 0.5
 sensitivityVertical = 0.5
 
@@ -166,5 +167,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.8339, 1, 29.4695)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("BoxShape3D_js8q8")
+
+[node name="treetest2" parent="." instance=ExtResource("14_jxna2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.9491, 0, -13.9501)
 
 [connection signal="dialogueCommand" from="Player" to="NpcSignalDirector" method="dialogueCommandRedirector"]
