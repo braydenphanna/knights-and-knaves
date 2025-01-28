@@ -19,7 +19,7 @@
 - [X] NPC scene
 - [X] Cel-Shader [Could be improved]
 - [ ] HUD
-- [X] Dialogue system [Could possibly be refined some more, FIX BUG WITH AFK SPIN WHILE CHATTING]
+- [X] Dialogue system [Could be refined some more]
 - [ ] Combat
 ### 0.2: Proof Of Concept [Advanced Mechanics]
 - [ ] Party System
