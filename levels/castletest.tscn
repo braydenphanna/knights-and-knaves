@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://doitm2ip102yb"]
+
+[ext_resource type="PackedScene" uid="uid://bcsn6o1fske0b" path="res://levels/castletest.blend" id="1_lcmo8"]
+
+[node name="castletest" instance=ExtResource("1_lcmo8")]

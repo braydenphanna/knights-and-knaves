@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://856crh1dl3gp"]
+[gd_scene load_steps=15 format=3 uid="uid://856crh1dl3gp"]
 
 [ext_resource type="Script" path="res://scripts/Main.cs" id="1_qewfo"]
 [ext_resource type="PackedScene" uid="uid://brdaqh36b5ql1" path="res://entities/player.tscn" id="2_tpy4b"]
@@ -9,43 +9,49 @@
 [ext_resource type="Script" path="res://scripts/NpcSignalDirector.cs" id="7_ajtft"]
 [ext_resource type="Script" path="res://scripts/CombatController.cs" id="8_rt7kh"]
 [ext_resource type="Texture2D" uid="uid://c5kxdlrled7gr" path="res://assets/crosshair.png" id="9_5e66t"]
-[ext_resource type="PackedScene" uid="uid://deadq82vllcpw" path="res://levels/home.blend" id="9_yisw7"]
-[ext_resource type="PackedScene" uid="uid://cw4wqkayuwerl" path="res://levels/colorleveltest.tscn" id="12_8hd6n"]
-[ext_resource type="PackedScene" uid="uid://cybi5r0k14b4o" path="res://assets/house.blend" id="12_b0nr2"]
-[ext_resource type="PackedScene" uid="uid://jidsowodb7f6" path="res://levels/halltestlevel.tscn" id="12_ojgbk"]
-[ext_resource type="PackedScene" uid="uid://dbky2jia4oosn" path="res://levels/treetest.tscn" id="14_jxna2"]
+[ext_resource type="PackedScene" uid="uid://doitm2ip102yb" path="res://levels/castletest.tscn" id="11_vef4q"]
+[ext_resource type="Script" path="res://scripts/CameraAngleController.cs" id="12_k5aro"]
+[ext_resource type="Texture2D" uid="uid://dj1kquj4ff6y7" path="res://levels/castletest.png" id="15_shwy7"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_paln1"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mylpr"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
 
-[sub_resource type="Sky" id="Sky_k7l3t"]
-sky_material = SubResource("ProceduralSkyMaterial_paln1")
-
-[sub_resource type="Environment" id="Environment_jho0b"]
-sky = SubResource("Sky_k7l3t")
-ambient_light_source = 3
-ambient_light_color = Color(0.753984, 0.753984, 0.753984, 1)
-tonemap_mode = 2
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p4cdt"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nlm7v"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_2624c"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_js8q8"]
-size = Vector3(1, 2, 2)
+[sub_resource type="Environment" id="Environment_wodnv"]
+background_mode = 3
+background_canvas_max_layer = -1
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_qewfo")
 
-[node name="home" parent="." instance=ExtResource("9_yisw7")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("2_tpy4b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.3144, 1.27049, -13.832)
+[node name="Pre-rendered Background" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("15_shwy7")
+
+[node name="3D Assets" type="TextureRect" parent="CanvasLayer/Pre-rendered Background"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_mylpr")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+top_level = true
+offset_right = 1920.0
+offset_bottom = 1096.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_tpy4b")]
 sensitivityHorizontal = 0.5
 sensitivityVertical = 0.5
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="SubViewportContainer/SubViewport"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,7 +60,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_o2k1t")
 
-[node name="TextBox" type="TextureRect" parent="UI"]
+[node name="TextBox" type="TextureRect" parent="SubViewportContainer/SubViewport/UI"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -70,7 +76,7 @@ grow_vertical = 0
 texture = ExtResource("4_v2gr0")
 stretch_mode = 5
 
-[node name="Text" type="RichTextLabel" parent="UI/TextBox"]
+[node name="Text" type="RichTextLabel" parent="SubViewportContainer/SubViewport/UI/TextBox"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 9.0
@@ -78,7 +84,7 @@ offset_right = 904.0
 offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 36
 
-[node name="Char1_Health" type="TextureProgressBar" parent="UI"]
+[node name="Char1_Health" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/UI"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -96,7 +102,7 @@ value = 100.0
 fill_mode = 4
 texture_progress = ExtResource("5_7jsh1")
 
-[node name="Char1_Portrait" type="TextureRect" parent="UI"]
+[node name="Char1_Portrait" type="TextureRect" parent="SubViewportContainer/SubViewport/UI"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -112,7 +118,7 @@ grow_vertical = 0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_wkxgf")
 
-[node name="Crosshair" type="TextureRect" parent="UI"]
+[node name="Crosshair" type="TextureRect" parent="SubViewportContainer/SubViewport/UI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -127,48 +133,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_5e66t")
 
-[node name="NpcSignalDirector" type="Node" parent="."]
+[node name="NpcSignalDirector" type="Node" parent="SubViewportContainer/SubViewport"]
 script = ExtResource("7_ajtft")
 
-[node name="CombatController" type="Node" parent="."]
+[node name="CombatController" type="Node" parent="SubViewportContainer/SubViewport"]
 script = ExtResource("8_rt7kh")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_jho0b")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_wodnv")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.438512, 0.898725, 0, -0.898725, 0.438512, 0, 17.502, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.965926, 0.113495, 0.232607, -0.258819, 0.42357, 0.868102, 0, -0.898725, 0.438512, 0, 17.502, 0)
 
-[node name="house2" parent="." instance=ExtResource("12_b0nr2")]
-transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, -1.30694, 0.0500002, 6.99933)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(3.42478, 0.516653, 0, -2.06661, 0.856195, 0, 0, 0, 1, -7.52822, 1.91895, -0.761511)
-physics_material_override = SubResource("PhysicsMaterial_p4cdt")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(2, 0, 0, 0, 0.05, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("BoxShape3D_nlm7v")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("PlaneMesh_2624c")
-skeleton = NodePath("../..")
-
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.389896, 0.920859, 0, -0.920859, 0.389896, 0, 0, 0)
 current = true
+fov = 20.4
 
-[node name="halltestlevel" parent="." instance=ExtResource("12_ojgbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.5038, 0, -11.9402)
+[node name="castletest" parent="SubViewportContainer/SubViewport" instance=ExtResource("11_vef4q")]
+visible = false
+script = ExtResource("12_k5aro")
 
-[node name="colorleveltest" parent="." instance=ExtResource("12_8hd6n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.8339, 1, 29.4695)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-shape = SubResource("BoxShape3D_js8q8")
-
-[node name="treetest2" parent="." instance=ExtResource("14_jxna2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.9491, 0, -13.9501)
-
-[connection signal="dialogueCommand" from="Player" to="NpcSignalDirector" method="dialogueCommandRedirector"]
+[connection signal="dialogueCommand" from="SubViewportContainer/SubViewport/Player" to="SubViewportContainer/SubViewport/NpcSignalDirector" method="dialogueCommandRedirector"]
